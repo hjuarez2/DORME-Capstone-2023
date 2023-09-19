@@ -1,4 +1,3 @@
-#This file contains the functions that wil be used to select the proper path
+# This file contains the functions that wil be used to select the proper path
 
-
-dadd
+import Map_Database.py as md
