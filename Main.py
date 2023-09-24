@@ -3,3 +3,10 @@
 import Course_Correction.py as cc
 import Path_Selection.py as ps
 import sensors as ss
+
+
+
+
+while( True):
+    if (checkOffRoute == 1 ):
+        courseCorrect()
