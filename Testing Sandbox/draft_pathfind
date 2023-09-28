@@ -1,0 +1,56 @@
+import heapq
+
+# Have a dictionary with the coordinates of each of the coordinates, which we 
+# Will have to measure and then log in the locations. 
+
+# Initialize the extended graph
+graph = {
+    'Duncan Hall': [('Crossroad1', 'East', 5), ('Crossroad3', 'South', 7)],
+    'Debart Hall': [('Crossroad1', 'West', 5), ('Crossroad2', 'South-East', 6)],
+    'Fitzpatrick Hall': [('Crossroad2', 'North-West', 6), ('Crossroad3', 'North', 7)],
+    'Crossroad1': [('Duncan Hall', 'West', 5), ('Debart Hall', 'East', 5)],
+    'Crossroad2': [('Debart Hall', 'North-West', 6), ('Fitzpatrick Hall', 'South-East', 6)],
+    'Crossroad3': [('Duncan Hall', 'North', 7), ('Fitzpatrick Hall', 'South', 7)],
+}
+
+# Dijkstra's algorithm to find the shortest path
+def dijkstra(graph, start, end):
+    distances = {node: float('inf') for node in graph}
+    previous_nodes = {node: None for node in graph}
+    distances[start] = 0
+    
+    priority_queue = [(0, start)]
+    
+    while priority_queue:
+        current_distance, current_node = heapq.heappop(priority_queue)
+        
+        if current_distance > distances[current_node]:
+            continue
+            
+        for neighbor, direction, weight in graph[current_node]:
+            distance = current_distance + weight
+            
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                previous_nodes[neighbor] = current_node
+                heapq.heappush(priority_queue, (distance, neighbor))
+    
+    path = []
+    while end:
+        path.append(end)
+        end = previous_nodes[end]
+    path.reverse()
+    
+    return path
+
+# Take user input for start and end points
+start_point = input("Enter the starting point: ")
+end_point = input("Enter the end point: ")
+
+# Check if the provided start and end points are valid
+if start_point not in graph or end_point not in graph:
+    print("Invalid start or end point.")
+else:
+    # Find and print the shortest path
+    shortest_path = dijkstra(graph, start_point, end_point)
+    print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
