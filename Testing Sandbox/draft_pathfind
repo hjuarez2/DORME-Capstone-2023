@@ -14,33 +14,25 @@ graph = {
 }
 
 # Dijkstra's algorithm to find the shortest path
-def dijkstra(graph, start, end):
+def bellman_ford(graph, start, end):
+
     distances = {node: float('inf') for node in graph}
     previous_nodes = {node: None for node in graph}
     distances[start] = 0
-    
-    priority_queue = [(0, start)]
-    
-    while priority_queue:
-        current_distance, current_node = heapq.heappop(priority_queue)
-        
-        if current_distance > distances[current_node]:
-            continue
-            
-        for neighbor, direction, weight in graph[current_node]:
-            distance = current_distance + weight
-            
-            if distance < distances[neighbor]:
-                distances[neighbor] = distance
-                previous_nodes[neighbor] = current_node
-                heapq.heappush(priority_queue, (distance, neighbor))
+
+    for node in range(len(graph) - 1):
+        for current_node in graph:
+            for neighbor, direction, weight in graph[current_node]:
+                distance = distances[current_node] + weight
+                if distance < distances[neighbor]:
+                    distances[neighbor] = distance
+                    previous_nodes[neighbor] = current_node
     
     path = []
     while end:
         path.append(end)
         end = previous_nodes[end]
     path.reverse()
-    
     return path
 
 # Take user input for start and end points
@@ -52,5 +44,5 @@ if start_point not in graph or end_point not in graph:
     print("Invalid start or end point.")
 else:
     # Find and print the shortest path
-    shortest_path = dijkstra(graph, start_point, end_point)
+    shortest_path = bellman_ford(graph, start_point, end_point)
     print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
