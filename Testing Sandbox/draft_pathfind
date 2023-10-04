@@ -13,8 +13,8 @@ graph = {
     'Crossroad3': [('Duncan Hall', 'North', 7), ('Fitzpatrick Hall', 'South', 7)],
 }
 
-# Dijkstra's algorithm to find the shortest path
-def bellman_ford(graph, start, end):
+# A star's algorithm to find the shortest path
+def a_star(graph, start, end):
 
     distances = {node: float('inf') for node in graph}
     previous_nodes = {node: None for node in graph}
@@ -44,5 +44,5 @@ if start_point not in graph or end_point not in graph:
     print("Invalid start or end point.")
 else:
     # Find and print the shortest path
-    shortest_path = bellman_ford(graph, start_point, end_point)
+    shortest_path = a_star(graph, start_point, end_point)
     print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
