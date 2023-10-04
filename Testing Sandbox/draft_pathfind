@@ -16,22 +16,52 @@ graph = {
 # A star's algorithm to find the shortest path
 def a_star(graph, start, end):
 
-    distances = {node: float('inf') for node in graph}
-    previous_nodes = {node: None for node in graph}
-    distances[start] = 0
+    open_set = []  
+    heapq.heappush(open_set, (0, start))  
+    came_from = {}  
+    g_score = {node: float('inf') for node in graph}  
+    g_score[start] = 0  
 
-    for node in range(len(graph) - 1):
-        for current_node in graph:
-            for neighbor, direction, weight in graph[current_node]:
-                distance = distances[current_node] + weight
-                if distance < distances[neighbor]:
-                    distances[neighbor] = distance
-                    previous_nodes[neighbor] = current_node
-    
+    while open_set:
+        current_score, current = heapq.heappop(open_set)
+
+        if current == end:
+            return reconstruct_path(came_from, current)
+
+        for neighbor, direction, weight in graph[current]:
+            tentative_g_score = g_score[current] + weight
+
+            if tentative_g_score < g_score[neighbor]:
+                came_from[neighbor] = current
+                g_score[neighbor] = tentative_g_score
+                f_score = g_score[neighbor] + heuristic(neighbor, end)
+                heapq.heappush(open_set, (f_score, neighbor))
+
+    return None
+
+# Define a heuristic function (Euclidean distance in this case)
+def heuristic(node, goal):
+    x1, y1 = get_coordinates(node)
+    x2, y2 = get_coordinates(goal)
+    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+
+# Helper function to get coordinates from node names
+def get_coordinates(node):
+    coordinates = {
+        'Duncan Hall': (0, 0),
+        'Debart Hall': (1, 1),
+        'Fitzpatrick Hall': (2, 2),
+        'Crossroad1': (1, 0),
+        'Crossroad2': (2, 1),
+        'Crossroad3': (0, 2),
+    }
+    return coordinates.get(node)
+
+def reconstruct_path(came_from, current):
     path = []
-    while end:
-        path.append(end)
-        end = previous_nodes[end]
+    while current:
+        path.append(current)
+        current = came_from.get(current)
     path.reverse()
     return path
 
