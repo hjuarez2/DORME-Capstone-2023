@@ -5,9 +5,9 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 # Define the GPIO pins connected to the L298N
-IN1 = 17  # Connect to IN1 on the L298N
-IN2 = 18  # Connect to IN2 on the L298N
-ENA = 22  # Connect to ENA on the L298N
+IN1 = 23  # Connect to IN1 on the L298N
+IN2 = 24  # Connect to IN2 on the L298N
+ENA = 18  # Connect to ENA on the L298N
 
 # Setup the GPIO pins
 GPIO.setup(IN1, GPIO.OUT)
