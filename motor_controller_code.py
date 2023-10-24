@@ -1,10 +1,10 @@
 from machine import Pin, PWM
 from time import sleep
 
-IN1 = Pin(3, Pin.OUT)
-IN2 = Pin(2, Pin.OUT)
+IN1 = Pin(23, Pin.OUT)
+IN2 = Pin(24, Pin.OUT)
 
-speed = PWM(Pin(4))
+speed = PWM(Pin(18))
 speed.freq(1000)
 
 while True:
