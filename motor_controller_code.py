@@ -21,8 +21,8 @@ pwm.start(0)  # Start with duty cycle 0%
 # Function to move the motor forward
 def forward(speed):
     pwm.ChangeDutyCycle(speed)
-    GPIO.output(IN1, True)
-    GPIO.output(IN2, False)
+    GPIO.output(IN1, GPIO.HIGH)
+    GPIO.output(IN2, GPIO.LOW)
 
 # Function to move the motor backward
 def backward(speed):
