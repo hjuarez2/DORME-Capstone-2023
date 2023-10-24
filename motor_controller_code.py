@@ -1,32 +1,42 @@
-import RPi.GPIO as GPIO
+from machine import Pin, PWM
 from time import sleep
 
-# Set the GPIO mode
-GPIO.setmode(GPIO.BOARD)
+IN1 = Pin(3, Pin.OUT)
+IN2 = Pin(2, Pin.OUT)
 
-# Motor Pins: replace with the GPIO pins you're using
-Motor1A = 18
-Motor1B = 23
-Motor1E = 24
+speed = PWM(Pin(4))
+speed.freq(1000)
 
-# Setup GPIO pins
-GPIO.setup(Motor1A, GPIO.OUT)
-GPIO.setup(Motor1B, GPIO.OUT)
-GPIO.setup(Motor1E, GPIO.OUT)
-
-print("Turning motor on")
-
-# Forward rotation
-GPIO.output(Motor1A, GPIO.HIGH)  # Set Motor1A pin to HIGH
-GPIO.output(Motor1B, GPIO.LOW)   # Set Motor1B pin to LOW
-GPIO.output(Motor1E, GPIO.HIGH)  # Enable the motor
-
-# Wait for 2 seconds
-sleep(5)
-
-# Stop the motor
-print("Stopping motor")
-GPIO.output(Motor1E, GPIO.LOW)  # Disable the motor
-
-# Cleanup GPIO
-GPIO.cleanup()
+while True:
+        speed.duty_u16(10000)
+        IN1.low()  #spin forward
+        IN2.high()
+        sleep(5)
+        
+        IN1.low()  #stop
+        IN2.low()
+        sleep(2)
+        
+        speed.duty_u16(20000)
+        IN1.high()  #spin backward
+        IN2.low()
+        sleep(5)
+        
+        IN1.low()  #stop
+        IN2.low()
+        sleep(2)
+    
+        speed.duty_u16(30000)
+        IN1.low()  #spin forward
+        IN2.high()
+        sleep(5)
+        
+        IN1.low()  #stop
+        IN2.low()
+        sleep(2)
+        
+        speed.duty_u16(40000)
+        IN1.high()  #spin backward
+        IN2.low()
+        sleep(5)
+        
