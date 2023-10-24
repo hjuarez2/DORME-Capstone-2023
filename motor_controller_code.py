@@ -1,42 +1,63 @@
-from machine import Pin, PWM
-from time import sleep
+import RPi.GPIO as GPIO
+import time
 
-IN1 = Pin(23, Pin.OUT)
-IN2 = Pin(24, Pin.OUT)
+# Configure the GPIO settings
+GPIO.setmode(GPIO.BCM)
 
-speed = PWM(Pin(18))
-speed.freq(1000)
+# Define the GPIO pins connected to the L298N
+IN1 = 17  # Connect to IN1 on the L298N
+IN2 = 18  # Connect to IN2 on the L298N
+ENA = 22  # Connect to ENA on the L298N
 
-while True:
-        speed.duty_u16(10000)
-        IN1.low()  #spin forward
-        IN2.high()
-        sleep(5)
+# Setup the GPIO pins
+GPIO.setup(IN1, GPIO.OUT)
+GPIO.setup(IN2, GPIO.OUT)
+GPIO.setup(ENA, GPIO.OUT)
+
+# Setup PWM for ENA
+pwm = GPIO.PWM(ENA, 100)
+pwm.start(0)  # Start with duty cycle 0%
+
+# Function to move the motor forward
+def forward(speed):
+    pwm.ChangeDutyCycle(speed)
+    GPIO.output(IN1, True)
+    GPIO.output(IN2, False)
+
+# Function to move the motor backward
+def backward(speed):
+    pwm.ChangeDutyCycle(speed)
+    GPIO.output(IN1, False)
+    GPIO.output(IN2, True)
+
+# Function to stop the motor
+def stop():
+    pwm.ChangeDutyCycle(0)
+    GPIO.output(IN1, False)
+    GPIO.output(IN2, False)
+
+# Main loop
+try:
+    while True:
+        print("Moving forward")
+        forward(50)  # Move forward at 50% speed
+        time.sleep(2)  # Run for 2 seconds
         
-        IN1.low()  #stop
-        IN2.low()
-        sleep(2)
+        print("Stopping")
+        stop()  # Stop
+        time.sleep(1)  # Wait for 1 second
+
+        print("Moving backward")
+        backward(50)  # Move backward at 50% speed
+        time.sleep(2)  # Run for 2 seconds
         
-        speed.duty_u16(20000)
-        IN1.high()  #spin backward
-        IN2.low()
-        sleep(5)
-        
-        IN1.low()  #stop
-        IN2.low()
-        sleep(2)
-    
-        speed.duty_u16(30000)
-        IN1.low()  #spin forward
-        IN2.high()
-        sleep(5)
-        
-        IN1.low()  #stop
-        IN2.low()
-        sleep(2)
-        
-        speed.duty_u16(40000)
-        IN1.high()  #spin backward
-        IN2.low()
-        sleep(5)
+        print("Stopping")
+        stop()  # Stop
+        time.sleep(1)  # Wait for 1 second
+
+except KeyboardInterrupt:
+    print("Ctrl+C pressed. Stopping motor.")
+    stop()
+    GPIO.cleanup()
+
         
