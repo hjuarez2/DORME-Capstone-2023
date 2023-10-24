@@ -40,7 +40,7 @@ def stop():
 try:
     while True:
         print("Moving forward")
-        forward(50)  # Move forward at 50% speed
+        forward(300)  # Move forward at 50% speed
         time.sleep(2)  # Run for 2 seconds
         
         print("Stopping")
