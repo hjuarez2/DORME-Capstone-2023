@@ -22,7 +22,7 @@ GPIO.output(Motor1B, GPIO.LOW)   # Set Motor1B pin to LOW
 GPIO.output(Motor1E, GPIO.HIGH)  # Enable the motor
 
 # Wait for 2 seconds
-sleep(2)
+sleep(5)
 
 # Stop the motor
 print("Stopping motor")
