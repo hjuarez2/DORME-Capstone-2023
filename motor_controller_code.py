@@ -64,17 +64,17 @@ while(1):
 
     elif x=='l':
         print("low")
-        p.ChangeDutyCycle(25)
+        p.ChangeDutyCycle(10)
         x='z'
 
     elif x=='m':
         print("medium")
-        p.ChangeDutyCycle(50)
+        p.ChangeDutyCycle(20)
         x='z'
 
     elif x=='h':
         print("high")
-        p.ChangeDutyCycle(75)
+        p.ChangeDutyCycle(30)
         x='z'
      
     
