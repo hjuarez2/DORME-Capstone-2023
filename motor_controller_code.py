@@ -1,63 +1,87 @@
-import RPi.GPIO as GPIO
-import time
+# Python Script
+# https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/
 
-# Configure the GPIO settings
+import RPi.GPIO as GPIO          
+from time import sleep
+
+in1 = 24
+in2 = 23
+en = 25
+temp1=1
+
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(in1,GPIO.OUT)
+GPIO.setup(in2,GPIO.OUT)
+GPIO.setup(en,GPIO.OUT)
+GPIO.output(in1,GPIO.LOW)
+GPIO.output(in2,GPIO.LOW)
+p=GPIO.PWM(en,1000)
 
-# Define the GPIO pins connected to the L298N
-IN1 = 23  # Connect to IN1 on the L298N
-IN2 = 24  # Connect to IN2 on the L298N
-ENA = 18  # Connect to ENA on the L298N
+p.start(25)
+print("\n")
+print("The default speed & direction of motor is LOW & Forward.....")
+print("r-run s-stop f-forward b-backward l-low m-medium h-high e-exit")
+print("\n")    
 
-# Setup the GPIO pins
-GPIO.setup(IN1, GPIO.OUT)
-GPIO.setup(IN2, GPIO.OUT)
-GPIO.setup(ENA, GPIO.OUT)
+while(1):
 
-# Setup PWM for ENA
-pwm = GPIO.PWM(ENA, 100)
-pwm.start(0)  # Start with duty cycle 0%
+    x=raw_input()
+    
+    if x=='r':
+        print("run")
+        if(temp1==1):
+         GPIO.output(in1,GPIO.HIGH)
+         GPIO.output(in2,GPIO.LOW)
+         print("forward")
+         x='z'
+        else:
+         GPIO.output(in1,GPIO.LOW)
+         GPIO.output(in2,GPIO.HIGH)
+         print("backward")
+         x='z'
 
-# Function to move the motor forward
-def forward(speed):
-    pwm.ChangeDutyCycle(speed)
-    GPIO.output(IN1, GPIO.HIGH)
-    GPIO.output(IN2, GPIO.LOW)
 
-# Function to move the motor backward
-def backward(speed):
-    pwm.ChangeDutyCycle(speed)
-    GPIO.output(IN1, False)
-    GPIO.output(IN2, True)
+    elif x=='s':
+        print("stop")
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.LOW)
+        x='z'
 
-# Function to stop the motor
-def stop():
-    pwm.ChangeDutyCycle(0)
-    GPIO.output(IN1, False)
-    GPIO.output(IN2, False)
+    elif x=='f':
+        print("forward")
+        GPIO.output(in1,GPIO.HIGH)
+        GPIO.output(in2,GPIO.LOW)
+        temp1=1
+        x='z'
 
-# Main loop
-try:
-    while True:
-        print("Moving forward")
-        forward(100)  # Move forward at 50% speed
-        time.sleep(2)  # Run for 2 seconds
-        
-        print("Stopping")
-        stop()  # Stop
-        time.sleep(1)  # Wait for 1 second
+    elif x=='b':
+        print("backward")
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.HIGH)
+        temp1=0
+        x='z'
 
-        print("Moving backward")
-        backward(50)  # Move backward at 50% speed
-        time.sleep(2)  # Run for 2 seconds
-        
-        print("Stopping")
-        stop()  # Stop
-        time.sleep(1)  # Wait for 1 second
+    elif x=='l':
+        print("low")
+        p.ChangeDutyCycle(25)
+        x='z'
 
-except KeyboardInterrupt:
-    print("Ctrl+C pressed. Stopping motor.")
-    stop()
-    GPIO.cleanup()
+    elif x=='m':
+        print("medium")
+        p.ChangeDutyCycle(50)
+        x='z'
 
-        
+    elif x=='h':
+        print("high")
+        p.ChangeDutyCycle(75)
+        x='z'
+     
+    
+    elif x=='e':
+        GPIO.cleanup()
+        print("GPIO Clean up")
+        break
+    
+    else:
+        print("<<<  wrong data  >>>")
+        print("please enter the defined data to continue.....")
