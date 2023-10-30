@@ -74,7 +74,7 @@ while(1):
 
     elif x=='h':
         print("high")
-        p.ChangeDutyCycle(9)
+        p.ChangeDutyCycle(80)
         x='z'
      
     
