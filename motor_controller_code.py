@@ -6,7 +6,7 @@ from time import sleep
 
 in1 = 24
 in2 = 23
-en = 13
+en = 12
 temp1=1
 
 GPIO.setmode(GPIO.BCM)
