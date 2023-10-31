@@ -110,3 +110,9 @@ while(1):
     else:
         print("<<<  wrong data  >>>")
         print("please enater the defined data to continue.....")
+
+# functions to create
+# forward(distance (in meters))
+# backwards(distance (in meters))
+# rotate(degrees)
+# adjust_speed(level (which is either low medium or high))
