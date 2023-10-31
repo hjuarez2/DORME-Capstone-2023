@@ -85,20 +85,20 @@ while(1):
 
     elif x=='l':
         print("low")
-        p1.ChangeDutyCycle(3)
-        p2.ChangeDutyCycle(3)
+        p1.ChangeDutyCycle(10)
+        p2.ChangeDutyCycle(10)
         x='z'
 
     elif x=='m':
         print("medium")
-        p1.ChangeDutyCycle(6)
-        p2.ChangeDutyCycle(6)
+        p1.ChangeDutyCycle(20)
+        p2.ChangeDutyCycle(20)
         x='z'
 
     elif x=='h':
         print("high")
-        p1.ChangeDutyCycle(9)
-        p2.ChangeDutyCycle(9)
+        p1.ChangeDutyCycle(30)
+        p2.ChangeDutyCycle(30)
         x='z'
      
     
