@@ -80,7 +80,7 @@ def stop_motors():
 
 if __name__ == "__main__":
 
-    mc.forward()
+    forward()
 
     
     #n = len(sys.argv)
