@@ -25,22 +25,32 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
-def forward(distance=None):
+def forward(distance=1):
+    adjust_speed(low)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
+    time.sleep(1*distance)
+    stop_motors():
 
-def backward(distance=None):
+def backward(distance=1):
+    adjust_speed(low)
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.HIGH)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
+    time.sleep(1*distance)
+    stop_motors():
 
-def rotate(degrees=None):
-    # Logic for rotation is missing in the provided code. 
-    # This placeholder can be updated once the rotation mechanism is defined.
-    pass
+def rotate(degrees=1):
+    adjust_speed(high)
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.HIGH)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.HIGH)
+    time.sleep(1*degrees)
+    stop_motors():
 
 def adjust_speed(level):
     if level == 'low':
@@ -50,8 +60,8 @@ def adjust_speed(level):
         p1.ChangeDutyCycle(20)
         p2.ChangeDutyCycle(20)
     elif level == 'high':
-        p1.ChangeDutyCycle(30)
-        p2.ChangeDutyCycle(30)
+        p1.ChangeDutyCycle(35)
+        p2.ChangeDutyCycle(35)
     else:
         print("Invalid speed level")
 
@@ -64,7 +74,6 @@ def stop_motors():
 if __name__ == "__main__":
     while True:
         x = input()
-
         if x == 'r':
             forward()
             print("run forward")
