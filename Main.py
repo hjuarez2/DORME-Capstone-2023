@@ -4,7 +4,7 @@
 #import Path_Selection.py as ps
 #import sensors as ss
 #import draft_pathfind.py as pf
-package import RPi.GPIO as GPIO          
+import RPi.GPIO as GPIO          
 from time import sleep
 #import motor_controller_code_function.py as mc
 
