@@ -1,26 +1,24 @@
 import heapq
+import math
 
-# Have a dictionary with the coordinates of each of the coordinates, which we 
-# Will have to measure and then log in the locations. 
-
-# Initialize the extended graph
+# Updated graph with connections between nodes
 graph = {
-    'Duncan Hall': [('Crossroad1', 'East', 5), ('Crossroad3', 'South', 7)],
-    'Debart Hall': [('Crossroad1', 'West', 5), ('Crossroad2', 'South-East', 6)],
-    'Fitzpatrick Hall': [('Crossroad2', 'North-West', 6), ('Crossroad3', 'North', 7)],
-    'Crossroad1': [('Duncan Hall', 'West', 5), ('Debart Hall', 'East', 5)],
-    'Crossroad2': [('Debart Hall', 'North-West', 6), ('Fitzpatrick Hall', 'South-East', 6)],
-    'Crossroad3': [('Duncan Hall', 'North', 7), ('Fitzpatrick Hall', 'South', 7)],
+    'Duncan Hall': [('Crossroad1', 'East'), ('Crossroad2', 'North')],
+    'Debart Hall': [('Crossroad1', 'East')],
+    'Fitzpatrick Hall': [('Crossroad1','South'), ('Crossroad3','East')],
+    'Riley Hall': [('Crossroad2', 'West'), ('Crossroad3', 'East')],
+    'Crossroad1': [('Duncan Hall', 'West'), ('Debart Hall', 'West'), ('Fitzpatrick Hall', 'North')],
+    'Crossroad2': [('Duncan Hall', 'South'), ('Riley Hall', 'East')],
+    'Crossroad3': [('Riley Hall', 'West')],
 }
 
-# A star's algorithm to find the shortest path
-def a_star(graph, start, end):
 
-    open_set = []  
-    heapq.heappush(open_set, (0, start))  
-    came_from = {}  
-    g_score = {node: float('inf') for node in graph}  
-    g_score[start] = 0  
+def a_star(graph, start, end):
+    open_set = []
+    heapq.heappush(open_set, (0, start))
+    came_from = {}
+    g_score = {node: float('inf') for node in graph}
+    g_score[start] = 0
 
     while open_set:
         current_score, current = heapq.heappop(open_set)
@@ -28,8 +26,8 @@ def a_star(graph, start, end):
         if current == end:
             return reconstruct_path(came_from, current)
 
-        for neighbor, direction, weight in graph[current]:
-            tentative_g_score = g_score[current] + weight
+        for neighbor, direction in graph[current]:
+            tentative_g_score = g_score[current] + heuristic(current, neighbor)
 
             if tentative_g_score < g_score[neighbor]:
                 came_from[neighbor] = current
@@ -39,23 +37,31 @@ def a_star(graph, start, end):
 
     return None
 
-# Define a heuristic function (Euclidean distance in this case)
-def heuristic(node, goal):
-    x1, y1 = get_coordinates(node)
-    x2, y2 = get_coordinates(goal)
-    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+def heuristic(node1, node2):
+    # Haversine formula to calculate distance between two lat/lng points
+    lat1, lng1 = get_coordinates(node1)
+    lat2, lng2 = get_coordinates(node2)
+    R = 6371  # Earth's radius in kilometers
 
-# Helper function to get coordinates from node names
+    dlat = math.radians(lat2 - lat1)
+    dlng = math.radians(lng2 - lng1)
+    a = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlng / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    distance = R * c
+
+    return distance
+
 def get_coordinates(node):
     coordinates = {
-        'Duncan Hall': (0, 0),
-        'Debart Hall': (1, 1),
-        'Fitzpatrick Hall': (2, 2),
-        'Crossroad1': (1, 0),
-        'Crossroad2': (2, 1),
-        'Crossroad3': (0, 2),
+        'Duncan Hall': (41.699018, -86.235565),
+        'Debart Hall': (41.69889, -86.23652),
+        'Fitzpatrick Hall': (41.99530, -86.236295),
+        'Riley Hall': (41.699427, -86.235644),
+        'Crossroad1': (41.699016, -86.236491),
+        'Crossroad2': (41.69925, -86.235627),
+        'Crossroad3': (41.699356, -86.236295),
     }
-    return coordinates.get(node)
+    return coordinates[node]
 
 def reconstruct_path(came_from, current):
     path = []
@@ -65,14 +71,11 @@ def reconstruct_path(came_from, current):
     path.reverse()
     return path
 
-# Take user input for start and end points
 start_point = input("Enter the starting point: ")
 end_point = input("Enter the end point: ")
 
-# Check if the provided start and end points are valid
 if start_point not in graph or end_point not in graph:
     print("Invalid start or end point.")
 else:
-    # Find and print the shortest path
     shortest_path = a_star(graph, start_point, end_point)
     print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
