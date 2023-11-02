@@ -83,6 +83,7 @@ if __name__ == "__main__":
     forward()
     backward()
     rotate()
+    GPIO.cleanup()
 
     
     #n = len(sys.argv)
