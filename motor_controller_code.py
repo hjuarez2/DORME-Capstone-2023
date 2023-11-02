@@ -97,8 +97,8 @@ while(1):
 
     elif x=='h':
         print("high")
-        p1.ChangeDutyCycle(30)
-        p2.ChangeDutyCycle(30)
+        p1.ChangeDutyCycle(40)
+        p2.ChangeDutyCycle(40)
         x='z'
      
     
