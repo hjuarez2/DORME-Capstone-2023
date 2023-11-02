@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO          
+package import RPi.GPIO as GPIO          
 from time import sleep
 
 # Initialization
