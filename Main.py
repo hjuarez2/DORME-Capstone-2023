@@ -16,6 +16,10 @@ in4 = 27
 ena = 12
 enb = 13
 
+#Distance and Angle Conversion
+meter=3
+degree=1
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1,GPIO.OUT)
 GPIO.setup(in2,GPIO.OUT)
