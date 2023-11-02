@@ -8,7 +8,7 @@ import motor_controller_code_function.py as mc
 
 if __name__ == "__main__":
 
-    forward()
+    mc.forward()
 
     
     #n = len(sys.argv)
