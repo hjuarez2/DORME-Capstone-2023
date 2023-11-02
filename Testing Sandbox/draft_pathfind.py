@@ -4,12 +4,13 @@ import math
 # Updated graph with connections between nodes
 graph = {
     'Duncan Hall': [('Crossroad1', 'East'), ('Crossroad2', 'North')],
-    'Debart Hall': [('Crossroad1', 'East')],
-    'Fitzpatrick Hall': [('Crossroad1','South'), ('Crossroad3','East')],
-    'Riley Hall': [('Crossroad2', 'West'), ('Crossroad3', 'East')],
+    'Debart Hall': [('Crossroad1', 'East'), ('Crossroad4', 'North')],
+    'Fitzpatrick Hall': [('Crossroad1','South'),('Crossroad4', 'South')],
+    'Riley Hall': [('Crossroad2', 'West'), ('Crossroad3', 'East'), ('Crossroad4','West')],
     'Crossroad1': [('Duncan Hall', 'West'), ('Debart Hall', 'West'), ('Fitzpatrick Hall', 'North')],
     'Crossroad2': [('Duncan Hall', 'South'), ('Riley Hall', 'East')],
-    'Crossroad3': [('Riley Hall', 'West')],
+    'Crossroad3': [('Riley Hall', 'West'), ('Crossroad4', 'West')],
+    'Crossroad4':[('Fitzpatrick Hall', 'North'), ('Debart Hall', 'South'), ('Riley Hall', 'East'), ('Crossroad3', 'East')]
 }
 
 
@@ -60,6 +61,7 @@ def get_coordinates(node):
         'Crossroad1': (41.699016, -86.236491),
         'Crossroad2': (41.69925, -86.235627),
         'Crossroad3': (41.699356, -86.236295),
+        'Crossroad4': (41.699348, -86.236527),
     }
     return coordinates[node]
 
@@ -79,3 +81,4 @@ if start_point not in graph or end_point not in graph:
 else:
     shortest_path = a_star(graph, start_point, end_point)
     print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
+
