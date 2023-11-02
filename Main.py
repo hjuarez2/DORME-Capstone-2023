@@ -81,6 +81,8 @@ def stop_motors():
 if __name__ == "__main__":
 
     forward()
+    backward()
+    rotate()
 
     
     #n = len(sys.argv)
