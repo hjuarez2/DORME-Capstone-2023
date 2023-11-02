@@ -32,7 +32,7 @@ def forward(distance=1):
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
     time.sleep(1*distance)
-    stop_motors():
+    stop_motors()
 
 def backward(distance=1):
     adjust_speed(low)
@@ -41,7 +41,7 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
     time.sleep(1*distance)
-    stop_motors():
+    stop_motors()
 
 def rotate(degrees=1):
     adjust_speed(high)
@@ -50,7 +50,7 @@ def rotate(degrees=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
     time.sleep(1*degrees)
-    stop_motors():
+    stop_motors()
 
 def adjust_speed(level):
     if level == 'low':
