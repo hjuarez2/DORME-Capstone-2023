@@ -4,7 +4,7 @@ import Course_Correction.py as cc
 import Path_Selection.py as ps
 import sensors as ss
 import draft_pathfind.py as pf
-import motor_controller_code_function.py mc
+import motor_controller_code_function.py as mc
 
 if __name__ == "__main__":
 
