@@ -33,7 +33,7 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance=1):
-    adjust_speed('low')
+    adjust_speed('medium')
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
@@ -42,7 +42,7 @@ def forward(distance=1):
     stop_motors()
 
 def backward(distance=1):
-    adjust_speed('low')
+    adjust_speed('medium')
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.HIGH)
     GPIO.output(in3,GPIO.LOW)
