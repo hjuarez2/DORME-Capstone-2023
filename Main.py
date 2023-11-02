@@ -51,7 +51,7 @@ def backward(distance=1):
     stop_motors()
 
 def rotate(degrees=1):
-    adjust_speed('medium')
+    adjust_speed('high')
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
