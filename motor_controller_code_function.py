@@ -58,7 +58,7 @@ def rotate(degrees=1):
 def adjust_speed(level):
     if level == 'low':
         p1.ChangeDutyCycle(30)
-        p2.ChangeDutyCycle(30)
+        p2.ChangeDutyCycle(31)
         speedrate = 0.30842857142857
     elif level == 'medium':
         p1.ChangeDutyCycle(40)
