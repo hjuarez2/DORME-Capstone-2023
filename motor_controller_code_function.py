@@ -78,11 +78,11 @@ def stop_motors():
 if __name__ == "__main__":
 
     sleep(15)
-    forward(1.88)
+    forward(5)
     rotate(90)
-    forward(18.8214)
+    forward(40)
     rotate(90)
-    forward(1)
+    forward(5)
     GPIO.cleanup()
     
     while False:
