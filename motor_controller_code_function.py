@@ -84,7 +84,7 @@ if __name__ == "__main__":
     GPIO.output(in2,GPIO.HIGH)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    sleep(0.35)
+    sleep(1)
     GPIO.cleanup()
 
     
