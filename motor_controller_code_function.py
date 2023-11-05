@@ -79,9 +79,9 @@ if __name__ == "__main__":
 
     sleep(15)
     forward(5)
-    rotate(90)
+    rotate(100)
     forward(40)
-    rotate(90)
+    rotate(100)
     forward(5)
     GPIO.cleanup()
     
