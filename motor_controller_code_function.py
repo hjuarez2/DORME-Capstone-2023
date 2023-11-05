@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     sleep(15)
     p1.ChangeDutyCycle(30)
-    p2.ChangeDutyCycle(33)
+    p2.ChangeDutyCycle(30)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
