@@ -80,7 +80,7 @@ if __name__ == "__main__":
     sleep(15)
     forward(5)
     rotate(100)
-    forward(40)
+    forward(1)
     rotate(100)
     forward(5)
     GPIO.cleanup()
