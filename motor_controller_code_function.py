@@ -7,6 +7,8 @@ in1 = 24
 in2 = 23
 in3 = 17
 in4 = 27
+speedrate = 0.30842857142857
+turnrate = 
 ena = 12
 enb = 13
 
@@ -27,36 +29,37 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance=1):
-    adjust_speed(low)
+    adjust_speed('low')
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
-    time.sleep(1*distance)
+    time.sleep(speedrate*distance)
     stop_motors()
 
 def backward(distance=1):
-    adjust_speed(low)
+    adjust_speed('low')
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.HIGH)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    time.sleep(1*distance)
+    time.sleep(speedrate*distance)
     stop_motors()
 
 def rotate(degrees=1):
-    adjust_speed(high)
+    adjust_speed('low')
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.HIGH)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    time.sleep(1*degrees)
+    time.sleep(turnrate*degrees)
     stop_motors()
 
 def adjust_speed(level):
     if level == 'low':
-        p1.ChangeDutyCycle(10)
-        p2.ChangeDutyCycle(10)
+        p1.ChangeDutyCycle(30)
+        p2.ChangeDutyCycle(30)
+        speedrate = 0.30842857142857
     elif level == 'medium':
         p1.ChangeDutyCycle(20)
         p2.ChangeDutyCycle(20)
@@ -77,11 +80,11 @@ if __name__ == "__main__":
     sleep(15)
     p1.ChangeDutyCycle(30)
     p2.ChangeDutyCycle(30)
-    GPIO.output(in1,GPIO.HIGH)
-    GPIO.output(in2,GPIO.LOW)
-    GPIO.output(in3,GPIO.HIGH)
-    GPIO.output(in4,GPIO.LOW)
-    sleep(7)
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.HIGH)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.HIGH)
+    sleep(0.35)
     GPIO.cleanup()
 
     
