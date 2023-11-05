@@ -1,5 +1,6 @@
 package import RPi.GPIO as GPIO          
 from time import sleep
+import sys
 
 # Initialization
 in1 = 24
@@ -72,7 +73,19 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    while True:
+
+    sleep(7)
+    p1.ChangeDutyCycle(20)
+    p2.ChangeDutyCycle(20)
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.HIGH)
+    GPIO.output(in4,GPIO.LOW)
+    sleep(4)
+    sys.exit()
+
+    
+    while False:
         x = input()
         if x == 'r':
             forward()
