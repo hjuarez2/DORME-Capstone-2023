@@ -48,8 +48,8 @@ def backward(distance=1):
 
 def rotate(degrees=1):
     adjust_speed('low')
-    GPIO.output(in1,GPIO.LOW)
-    GPIO.output(in2,GPIO.HIGH)
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
     time.sleep(turnrate*degrees)
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     GPIO.output(in2,GPIO.HIGH)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    sleep(1)
+    sleep(2)
     GPIO.cleanup()
 
     
