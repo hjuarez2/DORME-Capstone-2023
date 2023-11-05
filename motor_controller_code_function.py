@@ -8,7 +8,7 @@ in2 = 23
 in3 = 17
 in4 = 27
 speedrate = 0.30842857142857
-turnrate = 10
+turnrate = 0.002777777777778
 ena = 12
 enb = 13
 
@@ -78,15 +78,11 @@ def stop_motors():
 if __name__ == "__main__":
 
     sleep(15)
-    p1.ChangeDutyCycle(40)
-    p2.ChangeDutyCycle(40)
-    GPIO.output(in1,GPIO.HIGH)
-    GPIO.output(in2,GPIO.LOW)
-    GPIO.output(in3,GPIO.LOW)
-    GPIO.output(in4,GPIO.HIGH)
-    sleep(0.9)
-    stop_motors()
-    GPIO.cleanup()
+    forward(1.88)
+    rotate(90)
+    forward(18.8214)
+    rotate(90)
+    forward(1)
 
     
     while False:
