@@ -47,7 +47,7 @@ def backward(distance=1):
     stop_motors()
 
 def rotate(degrees=1):
-    adjust_speed('low')
+    adjust_speed('medium')
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
@@ -61,8 +61,8 @@ def adjust_speed(level):
         p2.ChangeDutyCycle(30)
         speedrate = 0.30842857142857
     elif level == 'medium':
-        p1.ChangeDutyCycle(20)
-        p2.ChangeDutyCycle(20)
+        p1.ChangeDutyCycle(40)
+        p2.ChangeDutyCycle(40)
     elif level == 'high':
         p1.ChangeDutyCycle(35)
         p2.ChangeDutyCycle(35)
