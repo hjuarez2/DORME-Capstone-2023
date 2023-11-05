@@ -8,7 +8,7 @@ in2 = 23
 in3 = 17
 in4 = 27
 speedrate = 0.30842857142857
-turnrate = 
+turnrate = 10
 ena = 12
 enb = 13
 
