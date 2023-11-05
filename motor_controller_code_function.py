@@ -77,7 +77,7 @@ def stop_motors():
 
 if __name__ == "__main__":
 
-    sleep(15)
+    sleep(3)
     p1.ChangeDutyCycle(30)
     p2.ChangeDutyCycle(30)
     GPIO.output(in1,GPIO.LOW)
