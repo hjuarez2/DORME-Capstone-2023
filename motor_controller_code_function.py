@@ -83,7 +83,7 @@ if __name__ == "__main__":
     forward(18.8214)
     rotate(90)
     forward(1)
-
+    GPIO.cleanup()
     
     while False:
         x = input()
