@@ -6,7 +6,9 @@
 #import draft_pathfind.py as pf
 import RPi.GPIO as GPIO          
 from time import sleep
-import pathfind.py
+from pathfind import short_path
+from Testing_Sandbox.draft_connect import from_name_to_coordinates
+from Testing_Sandbox.draft_connect import from_coordinates_to_distance
 #import motor_controller_code_function.py as mc
 
 # Pin setup and Constants
@@ -83,7 +85,35 @@ def stop_motors():
 if __name__ == "__main__":
     start_point = input("Enter the starting point: ")
     end_point = input("Enter the end point: ")
-    node_list = short_path(start_point, end_point)
+    node_name_list = short_path(start_point, end_point)
+
+    cartesian_coordinate_list = []
+    polar_coordinate_list = []
+
+    # array of nodes -> draft connect function
+    cartesian_coordinate_list = from_name_to_coordinates(node_name_list)
+    polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
+
+    for polar_coordinate_pair in polar_coordinate_list:
+        # turn first and then distance
+        rotate(polar_coordinate_pair[1])
+        # distance
+        forward(polar_coordinate_pair[0])
+
+        # we can't determine if we are at next node because of GPS
+
+    # reversing the list
+    cartesian_coordinate_list = cartesian_coordinate_list.reverse()
+    polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
+
+    # sleep for 10 seconds
+    sleep(10)
+
+    for polar_coordinate_pair in polar_coordinate_list:
+        # turn first and then distance
+        rotate(polar_coordinate_pair[1])
+        # distance
+        forward(polar_coordinate_pair[0])
 
     forward()
     backward()
