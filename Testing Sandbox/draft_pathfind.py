@@ -81,9 +81,11 @@ def short_path(start_point, end_point):
         print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
     return shortest_path
 
-start_point = input("Enter the starting point: ")
-end_point = input("Enter the end point: ")
 
-short_path(start_point, end_point)
+if __name__ == "__main__":
+    start_point = input("Enter the starting point: ")
+    end_point = input("Enter the end point: ")
+
+    short_path(start_point, end_point)
 
 

@@ -80,7 +80,10 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    
+    start_point = input("Enter the starting point: ")
+    end_point = input("Enter the end point: ")
+    node_list = short_path(start_point, end_point)
+
     forward()
     backward()
     rotate()
