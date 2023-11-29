@@ -1,5 +1,5 @@
-from  draft_pathfind import short_path
-from  draft_pathfind import get_coordinates
+from  pathfind import short_path
+from  pathfind import get_coordinates
 from draft_path_Between_Nodes import two_coordinates_to_distance_and_bearing
 
 start_point = input("Enter the starting point: ")

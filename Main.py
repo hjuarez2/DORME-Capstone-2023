@@ -6,6 +6,7 @@
 #import draft_pathfind.py as pf
 import RPi.GPIO as GPIO          
 from time import sleep
+import pathfind.py
 #import motor_controller_code_function.py as mc
 
 # Pin setup and Constants
@@ -88,14 +89,4 @@ if __name__ == "__main__":
     backward()
     rotate()
     GPIO.cleanup()
-
-    
-    #n = len(sys.argv)
-    
-    #path = a_star(sys.argv[1], sys.argv[2], sys.argv[3])
-    #currentNode=sys.argv[1]
-
-    #for i in range(0,len(path)):
-        #driveto(currentNode,path[i])
-
 
