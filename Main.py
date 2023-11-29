@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 #import motor_controller_code_function.py as mc
 
-# Initialization
+# Pin setup and Constants
 in1 = 24
 in2 = 23
 in3 = 17
@@ -16,10 +16,14 @@ in4 = 27
 ena = 12
 enb = 13
 
+lSpeed = 75
+rSpeed = 75
+
 #Distance and Angle Conversion
 meter=3
 degree=1
 
+#GPIO initialization
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1,GPIO.OUT)
 GPIO.setup(in2,GPIO.OUT)
@@ -36,26 +40,23 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
-def forward(distance=1):
-    adjust_speed('medium')
+def forward():
+    adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
-    sleep(1*distance)
-    stop_motors()
+
 
 def backward(distance=1):
-    adjust_speed('medium')
+    adjust_speed(50,50)
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.HIGH)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    sleep(1*distance)
-    stop_motors()
 
 def rotate(degrees=1):
-    adjust_speed('high')
+    adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
@@ -63,18 +64,14 @@ def rotate(degrees=1):
     sleep(1*degrees)
     stop_motors()
 
-def adjust_speed(level):
-    if level == 'low':
-        p1.ChangeDutyCycle(10)
-        p2.ChangeDutyCycle(10)
-    elif level == 'medium':
-        p1.ChangeDutyCycle(20)
-        p2.ChangeDutyCycle(20)
-    elif level == 'high':
-        p1.ChangeDutyCycle(35)
-        p2.ChangeDutyCycle(35)
-    else:
-        print("Invalid speed level")
+def adjust_speed(left, right):
+    global lSpeed
+    global rSpeed 
+    lSpeed = left
+    rSpeed = right
+    p1.ChangeDutyCycle(lSpeed)
+    p2.ChangeDutyCycle(rSpeed)
+
 
 def stop_motors():
     GPIO.output(in1,GPIO.LOW)
@@ -83,7 +80,7 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-
+    
     forward()
     backward()
     rotate()
