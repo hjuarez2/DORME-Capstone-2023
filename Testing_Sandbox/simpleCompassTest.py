@@ -16,6 +16,13 @@ while True:
  
  
  mag_x, mag_y, mag_z = sensor.magnetic
+ 
+ magnitude = math.sqrt(mag_x**2 + mag_y**2)
+ if magnitude != 0:
+    mag_x /= magnitude
+    mag_y /= magnitude
+
+
  heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
  print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
  #print(mag_x)
