@@ -100,10 +100,11 @@ if __name__ == "__main__":
          heading += 360
 
       rotate()
-      if(heading>90):
+      if(heading>target):
           stop_motors()
           sleep(2)
           target+=90
+          target = target%360
 
       
 
