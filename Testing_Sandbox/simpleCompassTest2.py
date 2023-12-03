@@ -92,7 +92,7 @@ def stop_motors():
 
 if __name__ == "__main__":
     target = 180
-    threshold_angle = 3
+    threshold_angle = 5
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 5
 
