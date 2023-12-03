@@ -100,12 +100,12 @@ if __name__ == "__main__":
          heading += 360
 
       rotate()
-      if(heading>target):
+      if(heading-target < 1 ):
           print("current heading" + str(heading))
           stop_motors()
           sleep(2)
           target+=90
-          target = target%361
+          target = target%360
           print("new target" + str(target))
 
       
