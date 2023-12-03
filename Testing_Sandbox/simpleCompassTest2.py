@@ -105,7 +105,7 @@ if __name__ == "__main__":
           stop_motors()
           sleep(2)
           target+=90
-          target = target%360
+          target = target%360.1
           print("new target" + str(target))
 
       
