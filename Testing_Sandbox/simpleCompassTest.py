@@ -3,6 +3,7 @@
 """ Display magnetometer data once per second """
 import time
 import board
+import math
 import adafruit_lis3mdl
 i2c = board.I2C() # uses board.SCL and board.SDA
 # i2c = board.STEMMA_I2C() # For using the built-in STEMMA QT connector on a microcontroller
@@ -32,9 +33,11 @@ while True:
  total+=mag_x
  #print("count: " + str(count)+ " avg: "+ str(total/count))
  #print(str(mag_x)+ "   " + str(magnetometer_to_compass_degree(mag_x)))
- readings.append(mag_x)
- print(max(readings) - min(readings))
- time.sleep(0.01)
+ heading_rad = math.atan2(mag_y, mag_x)
+ heading_deg = math.degrees(heading_rad)
+ if heading_deg < 0:
+    heading_deg += 360
+ time.sleep(0.5)
 
 
 #after 2000 ticks averaged, north is 30.916822566500954
