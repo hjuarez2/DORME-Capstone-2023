@@ -27,4 +27,4 @@ while True:
  #if heading < 0:
    # heading += 360
  print(f"Magnetic Heading: {heading:.2f} degrees")
- time.sleep(0.5)
+ time.sleep(0.25)
