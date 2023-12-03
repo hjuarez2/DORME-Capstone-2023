@@ -32,7 +32,7 @@ while True:
  #print("count: " + str(count)+ " avg: "+ str(total/count))
  print(magnetometer_to_compass_degree(mag_x))
  print("")
- time.sleep(0.05)
+ time.sleep(0.5)
 
 
 #after 2000 ticks averaged, north is 30.916822566500954
