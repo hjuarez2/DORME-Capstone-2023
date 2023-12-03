@@ -18,6 +18,6 @@ while True:
  #print(mag_x)
  count+=1
  total+=mag_x
- print(total/count)
+ print("count:" + count+ "avg: "+(total/count))
  print("")
  time.sleep(0.1)
