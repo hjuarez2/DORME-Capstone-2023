@@ -23,7 +23,7 @@ while True:
  #total+=mag_x
  #print("count: " + str(count)+ " avg: "+ str(total/count))
  #print(str(mag_x)+ "   " + str(magnetometer_to_compass_degree(mag_x)))
- heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
+ heading = math.atan2(mag_x, mag_y) * (180 / math.pi)
  if heading < 0:
     heading += 360
  print(f"Magnetic Heading: {heading:.2f} degrees")
