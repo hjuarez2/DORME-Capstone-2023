@@ -26,5 +26,5 @@ while True:
  heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
  if heading < 0:
     heading += 360
- #print(heading)
+ print(heading)
  time.sleep(0.5)
