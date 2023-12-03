@@ -6,8 +6,6 @@
 #import draft_pathfind.py as pf
 import RPi.GPIO as GPIO          
 from time import sleep
-from Testing_Sandbox.draft_connect import from_name_to_coordinates
-from Testing_Sandbox.draft_connect import from_coordinates_to_distance
 import board
 import math
 import adafruit_lis3mdl
