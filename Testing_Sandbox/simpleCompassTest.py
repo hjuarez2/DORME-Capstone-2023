@@ -20,4 +20,4 @@ while True:
  total+=mag_x
  print(total/count)
  print("")
- time.sleep(0.5)
+ time.sleep(0.1)
