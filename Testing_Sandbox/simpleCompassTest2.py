@@ -92,7 +92,7 @@ def stop_motors():
 
 if __name__ == "__main__":
     target = 45
-    threshold_angle = 10
+    threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 5
 
@@ -110,3 +110,6 @@ if __name__ == "__main__":
                 break  # Exit the loop once the target heading is reached within the threshold for consecutive readings
         else:
             consecutive_within_threshold = 0  # Reset the counter if not consecutive within threshold
+
+
+#translations
