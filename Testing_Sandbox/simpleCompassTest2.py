@@ -91,7 +91,7 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    target = 45
+    target = 47
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 5
