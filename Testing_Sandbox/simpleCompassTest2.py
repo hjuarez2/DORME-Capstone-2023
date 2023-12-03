@@ -92,11 +92,11 @@ def stop_motors():
 
 if __name__ == "__main__":
    
-   target=90
+   target=200
    while True:
       mag_x, mag_y, mag_z = sensor.magnetic
       heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
-      if heading < 0:
+      #if heading < 0:
          heading += 360
 
       rotate()
