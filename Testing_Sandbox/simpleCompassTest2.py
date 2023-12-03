@@ -92,8 +92,9 @@ def stop_motors():
 
 if __name__ == "__main__":
     target = 90
-    consecutive_right_readings = 0
-    threshold_consecutive_readings = 3
+    threshold_angle = 5
+    consecutive_within_threshold = 0
+    threshold_consecutive_readings = 5
 
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
@@ -101,12 +102,11 @@ if __name__ == "__main__":
 
         rotate()
 
-        if ((heading - target + 180) % 360 - 180 >= 0):
-            consecutive_right_readings += 1
-            if consecutive_right_readings >= threshold_consecutive_readings:
-                print("Current heading: " + str(heading))
+        if abs(heading - target) <= threshold_angle:
+            consecutive_within_threshold += 1
+            if consecutive_within_threshold >= threshold_consecutive_readings:
+                print("Reached the target heading within threshold.")
                 stop_motors()
-                break  # Exit the loop once target heading is reached or surpassed
+                break  # Exit the loop once the target heading is reached within the threshold for consecutive readings
         else:
-            consecutive_right_readings = 0  # Reset the counter if not consecutive right readings
-
+            consecutive_within_threshold = 0  # Reset the counter if not consecutive within threshold
