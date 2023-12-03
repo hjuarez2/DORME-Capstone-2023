@@ -100,7 +100,7 @@ if __name__ == "__main__":
       rotate()
       if(heading>90):
           stop_motors()
-          time.sleep(5)
+          sleep(5)
 
       
 
