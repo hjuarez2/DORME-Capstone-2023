@@ -13,6 +13,21 @@ compass_range = 360
     # Adjust the readings to fall within the range of 0 to 360 degrees
     
 
+def magnetometer_to_compass(readout):
+    # Define the range of values
+    north_reading = 30.916822566500954
+    south_reading = -2.943678748903833
+    
+    # Map the readings to compass degrees
+    compass_range = north_reading - south_reading
+    degrees = ((readout - south_reading) / compass_range) * 360
+    
+    # Normalize the degrees to [0, 360)
+    normalized_degrees = degrees % 360
+    
+    return normalized_degrees
+
+
 count = 0
 total=0
 while True:
@@ -21,11 +36,12 @@ while True:
  mag_x, mag_y, mag_z = sensor.magnetic
  #print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
  #print(mag_x)
- count+=1
- total+=mag_x
+ #count+=1
+ #total+=mag_x
  #print("count: " + str(count)+ " avg: "+ str(total/count))
- compass_degrees = (mag_x % compass_range + compass_range) % compass_range
- print(str(mag_x) + " " + str(compass_degrees))
+ #compass_degrees = (mag_x % compass_range + compass_range) % compass_range
+ print(magnetometer_to_compass(mag_x)
+ #print(str(mag_x) + " " + str(compass_degrees))
  print("")
  time.sleep(0.5)
 
