@@ -13,6 +13,10 @@ import board
 import math
 import adafruit_lis3mdl
 
+i2c = board.I2C() # uses board.SCL and board.SDA
+# i2c = board.STEMMA_I2C() # For using the built-in STEMMA QT connector on a microcontroller
+sensor = adafruit_lis3mdl.LIS3MDL(i2c)
+
 
 #import motor_controller_code_function.py as mc
 
@@ -67,14 +71,12 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
-def rotate(degrees=1):
-    adjust_speed(75, 75)
+def rotate():
+    adjust_speed(25, 25)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    sleep(1*degrees)
-    stop_motors()
 
 def adjust_speed(left, right):
     global lSpeed
@@ -92,40 +94,16 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    start_point = input("Enter the starting point: ")
-    end_point = input("Enter the end point: ")
-    node_name_list = short_path(start_point, end_point)
+   while True:
+      mag_x, mag_y, mag_z = sensor.magnetic
+      heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
+      if heading < 0:
+         heading += 360
 
-    cartesian_coordinate_list = []
-    polar_coordinate_list = []
+      rotate()
+      if(heading>90):
+          stop_motors()
+          time.sleep(5)
 
-    # array of nodes -> draft connect function
-    cartesian_coordinate_list = from_name_to_coordinates(node_name_list)
-    polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
-
-    for polar_coordinate_pair in polar_coordinate_list:
-        # turn first and then distance
-        rotate(polar_coordinate_pair[1])
-        # distance
-        forward(polar_coordinate_pair[0])
-
-        # we can't determine if we are at next node because of GPS
-
-    # reversing the list
-    cartesian_coordinate_list = cartesian_coordinate_list.reverse()
-    polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
-
-    # sleep for 10 seconds
-    sleep(10)
-
-    for polar_coordinate_pair in polar_coordinate_list:
-        # turn first and then distance
-        rotate(polar_coordinate_pair[1])
-        # distance
-        forward(polar_coordinate_pair[0])
-
-    forward()
-    backward()
-    rotate()
-    GPIO.cleanup()
+      
 
