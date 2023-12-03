@@ -27,16 +27,21 @@ while True:
  mag_x, mag_y, mag_z = sensor.magnetic
  #print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
  #print(mag_x)
+ readings=[]
  count+=1
  total+=mag_x
- print("count: " + str(count)+ " avg: "+ str(total/count))
+ #print("count: " + str(count)+ " avg: "+ str(total/count))
  #print(str(mag_x)+ "   " + str(magnetometer_to_compass_degree(mag_x)))
- print("")
+ readings.append(mag_x)
+ print(max(readings) - min(readings))
  time.sleep(0.01)
 
 
 #after 2000 ticks averaged, north is 30.916822566500954
 #after 2000 ticks averaged, south is -2.943678748903833
+#after 2000 ticks averaged, east is 10.669614989375537
+#after 2000 ticks averaged, west is 12.901322549049544
+
 
 #clockwise subtracts
 #counterclockwise adds
