@@ -28,7 +28,7 @@ while True:
  #heading_deg = math.degrees(heading_rad)
  #if heading_deg < 0:
   #  heading_deg += 360
- #print(heading)
+ print(heading)
  time.sleep(0.5)
 
 
