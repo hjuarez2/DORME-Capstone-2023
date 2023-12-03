@@ -96,11 +96,11 @@ if __name__ == "__main__":
    while True:
       mag_x, mag_y, mag_z = sensor.magnetic
       heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
-      if heading < 0:
-         heading += 360
 
       rotate()
-      if(heading>target):
+      
+      
+      if((target - heading + 180) % 360 - 180 < 0):
           print("current heading" + str(heading))
           stop_motors()
           sleep(2)
