@@ -30,7 +30,7 @@ while True:
  count+=1
  total+=mag_x
  #print("count: " + str(count)+ " avg: "+ str(total/count))
- print(magnetometer_to_compass_degree(mag_x))
+ print(str(mag_x)+ "   " + str(magnetometer_to_compass_degree(mag_x)))
  print("")
  time.sleep(0.5)
 
