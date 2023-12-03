@@ -25,7 +25,7 @@ while True:
  total+=mag_x
  #print("count: " + str(count)+ " avg: "+ str(total/count))
  compass_degrees = (mag_x % compass_range + compass_range) % compass_range
- print(compass_degrees)
+ print(str(mag_x) + " " + str(compass_degrees))
  print("")
  time.sleep(0.5)
 
