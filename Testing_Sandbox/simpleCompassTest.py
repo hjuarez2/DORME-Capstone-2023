@@ -17,8 +17,6 @@ while True:
  
  mag_x, mag_y, mag_z = sensor.magnetic
  
- mag_x = round(mag_x)
- mag_y = round(mag_y)
 
  
  heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
