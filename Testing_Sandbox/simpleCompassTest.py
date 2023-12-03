@@ -17,8 +17,8 @@ while True:
  
  mag_x, mag_y, mag_z = sensor.magnetic
  heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
- if heading < 0:
-   heading += 360
+ #if heading < 0:
+  # heading += 360
  #print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
  #print(mag_x)
  #readings=[]
