@@ -24,6 +24,7 @@ while True:
  #print("count: " + str(count)+ " avg: "+ str(total/count))
  #print(str(mag_x)+ "   " + str(magnetometer_to_compass_degree(mag_x)))
  heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
+ heading-=30
  if heading < 0:
     heading += 360
  print(heading)
