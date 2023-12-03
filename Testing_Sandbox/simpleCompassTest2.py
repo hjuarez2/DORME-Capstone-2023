@@ -91,6 +91,8 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
+   
+   target=90
    while True:
       mag_x, mag_y, mag_z = sensor.magnetic
       heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
@@ -100,7 +102,8 @@ if __name__ == "__main__":
       rotate()
       if(heading>90):
           stop_motors()
-          sleep(5)
+          sleep(2)
+          target+=90
 
       
 
