@@ -16,16 +16,15 @@ while True:
  
  
  mag_x, mag_y, mag_z = sensor.magnetic
- print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
+ #print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
  #print(mag_x)
  #readings=[]
  #count+=1
  #total+=mag_x
  #print("count: " + str(count)+ " avg: "+ str(total/count))
  #print(str(mag_x)+ "   " + str(magnetometer_to_compass_degree(mag_x)))
- heading_rad = math.atan2(mag_y, mag_x)
- heading_deg = math.degrees(heading_rad)
- if heading_deg < 0:
-    heading_deg += 360
- print(heading_deg)
+ heading = math.atan2(Y, X) * (180 / math.pi)
+ if heading < 0:
+    heading += 360
+ print(heading)
  time.sleep(0.5)
