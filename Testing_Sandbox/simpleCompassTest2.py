@@ -100,7 +100,7 @@ if __name__ == "__main__":
          heading += 360
 
       rotate()
-      if(heading-target < 1 ):
+      if((heading-target) < 5 ):
           print("current heading" + str(heading))
           stop_motors()
           sleep(2)
