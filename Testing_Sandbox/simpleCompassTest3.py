@@ -1,30 +1,29 @@
+# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
+# SPDX-License-Identifier: MIT
+
+""" Display compass heading data five times per second """
+import time
+from math import atan2, degrees
 import board
-import busio
 import adafruit_lis3mdl
-import math
-from time import sleep
 
-# Create I2C bus
-i2c = busio.I2C(board.SCL, board.SDA)
-
-# Create sensor object
+i2c = board.I2C()  # uses board.SCL and board.SDA
+# i2c = board.STEMMA_I2C()  # For using the built-in STEMMA QT connector on a microcontroller
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 
-# Optionally adjust sensor settings
-#sensor.range = adafruit_lis3mdl.RANGE_4_GAUSS  # Set the range to 4 Gauss
 
-# Function to calculate heading
-def calculate_heading():
-    mag_x, mag_y, _ = sensor.magnetic  # Read magnetic data
+def vector_2_degrees(x, y):
+    angle = degrees(atan2(y, x))
+    if angle < 0:
+        angle += 360
+    return angle
 
-    # Calculate heading
-    heading = math.atan2(mag_y, mag_x) * 180 / math.pi
-    if heading < 0:
-        heading += 360
 
-    return heading
+def get_heading(_sensor):
+    magnet_x, magnet_y, _ = _sensor.magnetic
+    return vector_2_degrees(magnet_x, magnet_y)
+
 
 while True:
-    heading = calculate_heading()
-    print("Heading: {:.2f} degrees".format(heading))
-    sleep(0.05)
+    print("heading: {:.2f} degrees".format(get_heading(sensor)))
+    time.sleep(0.2)
