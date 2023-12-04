@@ -91,15 +91,16 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 def calculate_heading(x, y):
-    heading = math.atan2(y, x)
+    heading = math.atan2(x, y)
     # Convert radians to degrees
     heading_degrees = math.degrees(heading)
     # Normalize heading to be between 0 and 360 degrees
     normalized_heading = (heading_degrees + 360) % 360
     return normalized_heading
 
+
 if __name__ == "__main__":
-    target = 163.28849548873222
+    target = 37.062932359306046
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 1
@@ -125,7 +126,7 @@ if __name__ == "__main__":
     sleep(5)
     stop_motors()
 
-    target = 26.28528081645544
+    target = 52.12305369417322
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 3
