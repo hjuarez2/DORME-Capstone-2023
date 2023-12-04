@@ -137,7 +137,7 @@ if __name__ == "__main__":
         print("roating to heading: 69")
         findAngle(68)
         # distance
-        print("driving (m): "+ polar_coordinate_pair[0])
+        print("driving (m): "+ str(polar_coordinate_pair[0]))
         #forward(polar_coordinate_pair[0])
         sleep(84,922.48010*polar_coordinate_pair[0])
 
