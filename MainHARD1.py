@@ -106,11 +106,11 @@ if __name__ == "__main__":
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
         print("roating to heading: "+ str(polar_coordinate_pair[1]))
-        rotate(polar_coordinate_pair[1])
+        #rotate(polar_coordinate_pair[1])
         sleep(1)
         # distance
         print("driving (m): "+ str(polar_coordinate_pair[0]))
-        forward(polar_coordinate_pair[0])
+        #forward(polar_coordinate_pair[0])
         sleep(1)
 
         # we can't determine if we are at next node because of GPS
@@ -126,11 +126,11 @@ if __name__ == "__main__":
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
         print("roating to heading: "+ str(polar_coordinate_pair[1]))
-        rotate(polar_coordinate_pair[1])
+       # rotate(polar_coordinate_pair[1])
         sleep(1)
         # distance
         print("driving (m): "+ str(polar_coordinate_pair[0]))
-        forward(polar_coordinate_pair[0])
+       # forward(polar_coordinate_pair[0])
         sleep(1)
 
     forward()
