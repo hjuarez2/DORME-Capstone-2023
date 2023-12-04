@@ -2,6 +2,7 @@ import board
 import busio
 import adafruit_lis3mdl
 import math
+from time import sleep
 
 # Create I2C bus
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -26,3 +27,4 @@ def calculate_heading():
 while True:
     heading = calculate_heading()
     print("Heading: {:.2f} degrees".format(heading))
+    sleep(0.05)
