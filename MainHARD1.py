@@ -136,7 +136,7 @@ if __name__ == "__main__":
         convertedDistance = 84922.48010*polar_coordinate_pair[0]
         # turn first and then distance
         print("roating to heading: -5")
-        findAngle(-5)
+        findAngle(-6)
         sleep(3)
         
         # distance
