@@ -14,6 +14,9 @@ import math
 import adafruit_lis3mdl
 
 
+distanceMultiplier = 84,922.4801
+
+
 #import motor_controller_code_function.py as mc
 
 # Pin setup and Constants
@@ -70,18 +73,35 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
-def rotate(degrees=1):
+def rotate():
     adjust_speed(100, 100)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    if (degrees>0):    
-        sleep(0.01*abs(degrees))
-    else:
-        sleep(0.01*(abs(degrees)+180))
+   
 
     stop_motors()
+
+def findAngle(target):
+    threshold_angle = 3
+    consecutive_within_threshold = 0
+    threshold_consecutive_readings = 5
+
+    while True:
+        mag_x, mag_y, mag_z = sensor.magnetic
+        heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
+
+        rotate()
+
+        if abs(heading - target) <= threshold_angle:
+            consecutive_within_threshold += 1
+            if consecutive_within_threshold >= threshold_consecutive_readings:
+                print("Reached the target heading within threshold.")
+                stop_motors()
+                break  # Exit the loop once the target heading is reached within the threshold for consecutive readings
+        else:
+            consecutive_within_threshold = 0  # Reset the counter if not consecutive within threshold
 
 def adjust_speed(left, right):
     global lSpeed
@@ -114,13 +134,12 @@ if __name__ == "__main__":
 
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
-        print("roating to heading: "+ str(polar_coordinate_pair[1]))
-        rotate(polar_coordinate_pair[1])
-        sleep(1)
+        print("roating to heading: "+ 69))
+        rotate(69)
         # distance
-        print("driving (m): "+ str(polar_coordinate_pair[0]))
+        print("driving (m): "+ str(polar_coordinate_pair[0] * 84,922.48010))
         #forward(polar_coordinate_pair[0])
-        sleep(1)
+        sleep(84,922.48010*polar_coordinate_pair[0])
 
         # we can't determine if we are at next node because of GPS
 
