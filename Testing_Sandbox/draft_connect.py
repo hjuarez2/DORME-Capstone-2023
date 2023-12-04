@@ -12,6 +12,7 @@ def from_name_to_coordinates(node_list):
     return new_list
 
 def from_coordinates_to_distance(new_list):
+    del second_list[:]
     for i in range (0, len(new_list)-1):
         second_list.append(two_coordinates_to_distance_and_bearing(new_list[i], new_list[i+1]))
     
