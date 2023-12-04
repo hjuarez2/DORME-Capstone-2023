@@ -10,7 +10,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 
 # Optionally adjust sensor settings
-sensor.range = adafruit_lis3mdl.RANGE_4_GAUSS  # Set the range to 4 Gauss
+#sensor.range = adafruit_lis3mdl.RANGE_4_GAUSS  # Set the range to 4 Gauss
 
 # Function to calculate heading
 def calculate_heading():
