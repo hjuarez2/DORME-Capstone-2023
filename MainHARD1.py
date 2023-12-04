@@ -134,7 +134,7 @@ if __name__ == "__main__":
 
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
-        print("roating to heading: "+ 69))
+        print("roating to heading: 69")
         rotate(69)
         # distance
         print("driving (m): "+ str(polar_coordinate_pair[0] * 84,922.48010))
