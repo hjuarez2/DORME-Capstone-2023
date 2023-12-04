@@ -1,9 +1,6 @@
 # This program will be run to initate total functionality of DORM-E 
 
-#import Course_Correction.py as cc
-#import Path_Selection.py as ps
-#import sensors as ss
-#import draft_pathfind.py as pf
+
 import RPi.GPIO as GPIO          
 from time import sleep
 from pathfind import short_path
@@ -12,6 +9,7 @@ from Testing_Sandbox.draft_connect import from_coordinates_to_distance
 import board
 import math
 import adafruit_lis3mdl
+
 
 
 #import motor_controller_code_function.py as mc
@@ -27,13 +25,25 @@ enb = 13
 lSpeed = 75
 rSpeed = 75
 
-#Distance and Angle Conversion
-meter=3
-degree=1
-
-#compass setup
+#compass setup and offset calibration
 i2c = board.I2C()
+sensor = adafruit_lis3mdl.LIS3MDL(i2c)
+sensor.range = Range.RANGE_4_GAUSS
+x_offfset= 12.28
+y_offset = 12.77
+z_offset = -17.86
 
+def vector_2_degrees(x, y):
+    angle = degrees(atan2(y, x))
+    if angle < 0:
+        angle += 360
+    return angle
+
+def get_heading(_sensor):
+    magnet_x, magnet_y, _ = _sensor.magnetic
+    magnet_x += x_offfset
+    magnet_y +=y_offset
+    return vector_2_degrees(magnet_x, magnet_y)
 
 #GPIO initialization
 GPIO.setmode(GPIO.BCM)
@@ -52,7 +62,7 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
-def forward():
+def forward(distance = 1):
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
@@ -73,7 +83,8 @@ def rotate(degrees=1):
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    sleep(1*degrees)
+    while ((get_heading(sensor)-degrees) > 1):
+        continue
     stop_motors()
 
 def adjust_speed(left, right):
@@ -95,6 +106,7 @@ if __name__ == "__main__":
     start_point = input("Enter the starting point: ")
     end_point = input("Enter the end point: ")
     node_name_list = short_path(start_point, end_point)
+    print("Shortest Path:" + node_name_list)
 
     cartesian_coordinate_list = []
     polar_coordinate_list = []
@@ -105,27 +117,36 @@ if __name__ == "__main__":
 
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
-        rotate(polar_coordinate_pair[1])
+        print("orienting to "+ polar_coordinate_pair[1])
+        #unblock rotate(polar_coordinate_pair[1])
         # distance
-        forward(polar_coordinate_pair[0])
+        print("Moving forward "+ polar_coordinate_pair[0] + "meters")
+        #unblock forward(polar_coordinate_pair[0])
 
         # we can't determine if we are at next node because of GPS
 
     # reversing the list
-    cartesian_coordinate_list = cartesian_coordinate_list.reverse()
+    print("Arrived at destination. Calculating return route...")
+    cartesian_coordinate_list = cartesian_coordinate_list[::-1]
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
+
+    print("The return route is: "+node_name_list[::-1])
+    print("Returning in 10 seconds...")
 
     # sleep for 10 seconds
     sleep(10)
 
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
-        rotate(polar_coordinate_pair[1])
+        print("orienting to "+ polar_coordinate_pair[1])
+        #unblock rotate(polar_coordinate_pair[1])
         # distance
-        forward(polar_coordinate_pair[0])
+        print("Moving forward "+ polar_coordinate_pair[0] + "meters")
+        #unblock forward(polar_coordinate_pair[0])
 
-    forward()
-    backward()
-    rotate()
+    print("Delivery Successful!")
+    for _ in range(4):
+    #unblock rotate(180)
+    #unblock rotate(360)
     GPIO.cleanup()
 
