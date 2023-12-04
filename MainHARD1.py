@@ -168,7 +168,7 @@ if __name__ == "__main__":
        # rotate(polar_coordinate_pair[1])
         
         # distance
-        print("driving (m): "+ convertedDistance)
+        print("driving (m): "+ str(convertedDistance))
        # forward(polar_coordinate_pair[0])
         sleep(convertedDistance)
     GPIO.cleanup()
