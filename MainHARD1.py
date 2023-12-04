@@ -105,17 +105,18 @@ if __name__ == "__main__":
 
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
-        print("roating to heading: "+ polar_coordinate_pair[1])
+        print("roating to heading: "+ str(polar_coordinate_pair[1]))
         rotate(polar_coordinate_pair[1])
         sleep(1)
         # distance
-        print("driving (m): "+ polar_coordinate_pair[0])
+        print("driving (m): "+ str(polar_coordinate_pair[0]))
         forward(polar_coordinate_pair[0])
         sleep(1)
 
         # we can't determine if we are at next node because of GPS
 
     # reversing the list
+    print("reversing path...")
     cartesian_coordinate_list = cartesian_coordinate_list.reverse()
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
 
@@ -124,9 +125,11 @@ if __name__ == "__main__":
 
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
+        print("roating to heading: "+ str(polar_coordinate_pair[1]))
         rotate(polar_coordinate_pair[1])
         sleep(1)
         # distance
+        print("driving (m): "+ str(polar_coordinate_pair[0]))
         forward(polar_coordinate_pair[0])
         sleep(1)
 
