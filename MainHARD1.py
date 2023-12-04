@@ -134,7 +134,7 @@ if __name__ == "__main__":
 
     for polar_coordinate_pair in polar_coordinate_list:
         
-        convertedDistance = 84,922.48010*polar_coordinate_pair[0]
+        convertedDistance = 84922.48010*polar_coordinate_pair[0]
         # turn first and then distance
         print("roating to heading: 69")
         findAngle(68)
