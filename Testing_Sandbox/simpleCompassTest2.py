@@ -94,7 +94,7 @@ if __name__ == "__main__":
     target = 144
     threshold_angle = 3
     consecutive_within_threshold = 0
-    threshold_consecutive_readings = 3
+    threshold_consecutive_readings = 1
 
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
