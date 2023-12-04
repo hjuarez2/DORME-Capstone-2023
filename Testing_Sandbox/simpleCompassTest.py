@@ -32,7 +32,7 @@ while True:
  #print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
  #print(mag_x)
  #readings=[]
- count+=1
+ #count+=1
  #total+=mag_x
  #print("count: " + str(count)+ " avg: "+ str(total/count))
  #print(str(mag_x)+ "   " + str(magnetometer_to_compass_degree(mag_x)))
@@ -47,8 +47,8 @@ while True:
  # magnetometer_y = -0.866
  result_heading = calculate_heading(mag_x, mag_y)
  print("Heading:", result_heading)
- count = 0
- total=0
+ #count = 0
+ #total=0
  time.sleep(0.5)
 
 
