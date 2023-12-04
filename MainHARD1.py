@@ -85,7 +85,7 @@ def rotate():
 def findAngle(target):
     threshold_angle = 1
     consecutive_within_threshold = 0
-    threshold_consecutive_readings = 5
+    threshold_consecutive_readings = 3
 
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic

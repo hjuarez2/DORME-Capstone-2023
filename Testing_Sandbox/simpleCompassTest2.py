@@ -91,14 +91,14 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    target = 128
+    target = 163.28849548873222
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 1
 
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
-        heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
+        heading = math.atan2(mag_x, mag_y) * (180 / math.pi)
 
         rotate()
 
@@ -116,14 +116,14 @@ if __name__ == "__main__":
     sleep(5)
     stop_motors()
 
-    target = -22
+    target = 26.28528081645544
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 3
 
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
-        heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
+        heading = math.atan2(mag_x, mag_y) * (180 / math.pi)
 
         rotate()
 
