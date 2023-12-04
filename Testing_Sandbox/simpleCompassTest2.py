@@ -91,7 +91,7 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    target = -162
+    target = 144
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 3
@@ -113,8 +113,29 @@ if __name__ == "__main__":
     stop_motors
     sleep(3)
     forward()
-    sleep(84922.48010)
+    sleep(10)
     stop_motors()
+
+    target = -22
+    threshold_angle = 3
+    consecutive_within_threshold = 0
+    threshold_consecutive_readings = 3
+
+    while True:
+        mag_x, mag_y, mag_z = sensor.magnetic
+        heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
+
+        rotate()
+
+        if abs(heading - target) <= threshold_angle:
+            consecutive_within_threshold += 1
+            if consecutive_within_threshold >= threshold_consecutive_readings:
+                print("Reached the target heading within threshold.")
+                stop_motors()
+                break  # Exit the loop once the target heading is reached within the threshold for consecutive readings
+        else:
+            consecutive_within_threshold = 0  # Reset the counter if not consecutive within threshold
+
     GPIO.cleanup
 
 
