@@ -45,12 +45,11 @@ while True:
  # Replace these values with your magnetometer readings
  # magnetometer_x = 0.5
  # magnetometer_y = -0.866
- result_heading = calculate_heading(mag_y, mag_x)
+ result_heading = calculate_heading(mag_x, mag_y)
  print("Heading:", result_heading)
  #count = 0
  #total=0
  time.sleep(0.5)
-
 
 #after 2000 ticks averaged, north is 30.916822566500954
 #after 2000 ticks averaged, south is -2.943678748903833
