@@ -111,9 +111,9 @@ if __name__ == "__main__":
         else:
             consecutive_within_threshold = 0  # Reset the counter if not consecutive within threshold
     forward()
-    sleep(10)
+    sleep(84,922.48010)
     stop_motors()
-    GPIO.cleanup()
+    GPIO.cleanup
 
 
 #translations
