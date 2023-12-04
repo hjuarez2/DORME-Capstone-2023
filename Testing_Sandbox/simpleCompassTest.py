@@ -29,7 +29,7 @@ while True:
 
  
  #heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
- print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
+ #print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
  #print(mag_x)
  #readings=[]
  #count+=1
@@ -45,9 +45,8 @@ while True:
  # Replace these values with your magnetometer readings
  # magnetometer_x = 0.5
  # magnetometer_y = -0.866
- #result_heading = calculate_heading(mag_x, mag_y)
- #print("Heading:", result_heading)
- #print(mag_x)
+ result_heading = calculate_heading(mag_y, mag_x)
+ print("Heading:", result_heading)
  #count = 0
  #total=0
  time.sleep(0.5)
