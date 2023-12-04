@@ -9,6 +9,7 @@ from Testing_Sandbox.draft_connect import from_coordinates_to_distance
 import board
 import math
 import adafruit_lis3mdl
+import time
 
 
 
@@ -24,6 +25,7 @@ enb = 13
 
 lSpeed = 75
 rSpeed = 75
+forwardStartHeading = 0
 
 #compass setup and offset calibration
 i2c = board.I2C()
@@ -32,6 +34,9 @@ sensor.range = Range.RANGE_4_GAUSS
 x_offfset= 12.28
 y_offset = 12.77
 z_offset = -17.86
+
+#distance conversion
+timedistance_ratio = 1
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
@@ -63,11 +68,21 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance = 1):
+    global forwardStartHeading
+    forwardStartHeading = get_heading(_sensor)
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
+    current_time = time.time()
+    target_time = current_time + (distance * timedistance_ratio )
+    while(current_time < target_time):
+        checkHeading(fSH)
+    stop_motors()
+
+def checkHeading(fSH):
+    #TODO
 
 
 def backward(distance=1):
