@@ -79,7 +79,7 @@ def rotate(degrees=1):
     if (degrees>0):    
         sleep(0.005*abs(degrees))
     else:
-        sleep(0.05*(abs(degrees)+180))
+        sleep(0.005*(abs(degrees)+180))
 
     stop_motors()
 
