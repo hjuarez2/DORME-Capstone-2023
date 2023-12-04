@@ -33,7 +33,6 @@ meter=3
 degree=1
 
 #compass setup
-i2c = board.I2C()
 
 
 #GPIO initialization
