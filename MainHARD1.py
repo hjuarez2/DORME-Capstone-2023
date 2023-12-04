@@ -136,13 +136,17 @@ if __name__ == "__main__":
         
         convertedDistance = 84922.48010*polar_coordinate_pair[0]
         # turn first and then distance
-        print("roating to heading: 69")
+        print("roating to heading: -5")
+        findAngle(-5)
+        sleep(3)
         
         # distance
         print("driving (m): "+ str(convertedDistance))
         #forward(polar_coordinate_pair[0])
-        
+        forward()
         sleep(convertedDistance)
+        stop_motors()
+        sleep(3)
 
         # we can't determine if we are at next node because of GPS
 
@@ -158,8 +162,9 @@ if __name__ == "__main__":
 
     for polar_coordinate_pair in reversed_polar_coordinate_list:
         # turn first and then distance
-        print("roating to heading: -5")
-        findAngle(-5)
+        print("roating to heading: 68")
+        findAngle(68)
+        sleep(3)
         convertedDistance = 84922.48010*polar_coordinate_pair[0]
        # rotate(polar_coordinate_pair[1])
         
