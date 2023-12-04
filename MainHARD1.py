@@ -71,25 +71,17 @@ def backward(distance=1):
     GPIO.output(in4,GPIO.HIGH)
 
 def rotate(degrees=1):
-    if (degrees>0):
-        adjust_speed(75, 75)
-        GPIO.output(in1,GPIO.HIGH)
-        GPIO.output(in2,GPIO.LOW)
-        GPIO.output(in3,GPIO.LOW)
-        GPIO.output(in4,GPIO.HIGH)
+    adjust_speed(75, 75)
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.HIGH)
+    if (degrees>0):    
         sleep(0.05*abs(degrees))
-        stop_motors()
-    
     else:
-        adjust_speed(75, 75)
-        GPIO.output(in1,GPIO.LOW)
-        GPIO.output(in2,GPIO.HIGH)
-        GPIO.output(in3,GPIO.HIGH)
-        GPIO.output(in4,GPIO.LOW)
-        sleep(5)
-        stop_motors()
+        sleep(0.05*(abs(degrees)+180))
 
-
+    stop_motors()
 
 def adjust_speed(left, right):
     global lSpeed
