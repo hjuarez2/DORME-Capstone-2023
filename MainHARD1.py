@@ -119,6 +119,8 @@ if __name__ == "__main__":
     print("reversing path...")
     cartesian_coordinate_list = cartesian_coordinate_list.reverse()
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
+    print("new path:")
+    print(cartesian_coordinate_list)
 
     # sleep for 10 seconds
     sleep(10)
