@@ -57,13 +57,12 @@ p2.start(25)
 
 currHeading = 0
 
-def forward(distance):
+def forward():
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
-    sleep(10*distance)
 
 
 def backward(distance=1):
