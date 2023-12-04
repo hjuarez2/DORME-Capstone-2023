@@ -99,7 +99,7 @@ def calculate_heading(x, y):
 
 
 if __name__ == "__main__":
-    target = 37.062932359306046
+    target = 320.7133087059849
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 1
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     sleep(5)
     stop_motors()
 
-    target = 52.12305369417322
+    target = 76.19794413383818
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 3
