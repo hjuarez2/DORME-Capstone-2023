@@ -101,6 +101,7 @@ if __name__ == "__main__":
 
     # array of nodes -> draft connect function
     cartesian_coordinate_list = from_name_to_coordinates(node_name_list)
+    print(cartesian_coordinate_list)
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
 
     for polar_coordinate_pair in polar_coordinate_list:
