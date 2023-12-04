@@ -73,7 +73,7 @@ def backward(distance=1):
     GPIO.output(in4,GPIO.HIGH)
 
 def rotate():
-    adjust_speed(100, 100)
+    adjust_speed(80, 80)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
