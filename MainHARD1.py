@@ -36,7 +36,7 @@ degree=1
 
 #compass setup
 i2c = board.I2C()
-
+sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 
 #GPIO initialization
 GPIO.setmode(GPIO.BCM)
