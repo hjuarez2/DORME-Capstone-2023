@@ -117,15 +117,15 @@ if __name__ == "__main__":
 
     # reversing the list
     print("reversing path...")
-    #cartesian_coordinate_list = cartesian_coordinate_list.reverse()
-    polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
+    reversed_cartesian_coordinate_list = cartesian_coordinate_list.reverse()
+    reversed_polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
     print("new path:")
-    print(cartesian_coordinate_list)
+    print(reversed_cartesian_coordinate_list)
 
     # sleep for 10 seconds
     sleep(10)
 
-    for polar_coordinate_pair in polar_coordinate_list:
+    for polar_coordinate_pair in reversed_polar_coordinate_list:
         # turn first and then distance
         print("roating to heading: "+ str(polar_coordinate_pair[1]))
        # rotate(polar_coordinate_pair[1])
