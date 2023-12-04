@@ -52,12 +52,15 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
+currHeading = 0
+
 def forward(distance):
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
+    sleep(10*distance)
 
 
 def backward(distance=1):
@@ -68,13 +71,25 @@ def backward(distance=1):
     GPIO.output(in4,GPIO.HIGH)
 
 def rotate(degrees=1):
-    adjust_speed(75, 75)
-    GPIO.output(in1,GPIO.HIGH)
-    GPIO.output(in2,GPIO.LOW)
-    GPIO.output(in3,GPIO.LOW)
-    GPIO.output(in4,GPIO.HIGH)
-    sleep(1*degrees)
-    stop_motors()
+    if (degrees>0):
+        adjust_speed(75, 75)
+        GPIO.output(in1,GPIO.HIGH)
+        GPIO.output(in2,GPIO.LOW)
+        GPIO.output(in3,GPIO.LOW)
+        GPIO.output(in4,GPIO.HIGH)
+        sleep(5*degrees)
+        stop_motors()
+    
+    else:
+        adjust_speed(75, 75)
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.HIGH)
+        GPIO.output(in3,GPIO.HIGH)
+        GPIO.output(in4,GPIO.LOW)
+        sleep(5*degrees)
+        stop_motors()
+
+
 
 def adjust_speed(left, right):
     global lSpeed
@@ -108,7 +123,7 @@ if __name__ == "__main__":
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
         print("roating to heading: "+ str(polar_coordinate_pair[1]))
-        #rotate(polar_coordinate_pair[1])
+        rotate(polar_coordinate_pair[1])
         sleep(1)
         # distance
         print("driving (m): "+ str(polar_coordinate_pair[0]))
@@ -136,9 +151,5 @@ if __name__ == "__main__":
         print("driving (m): "+ str(polar_coordinate_pair[0]))
        # forward(polar_coordinate_pair[0])
         sleep(1)
-
-    forward()
-    backward()
-    rotate()
     GPIO.cleanup()
 
