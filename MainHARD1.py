@@ -77,7 +77,7 @@ def rotate(degrees=1):
         GPIO.output(in2,GPIO.LOW)
         GPIO.output(in3,GPIO.LOW)
         GPIO.output(in4,GPIO.HIGH)
-        sleep(5*degrees)
+        sleep(0.05*abs(degrees))
         stop_motors()
     
     else:
