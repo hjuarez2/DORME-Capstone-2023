@@ -78,11 +78,33 @@ def forward(distance = 1):
     current_time = time.time()
     target_time = current_time + (distance * timedistance_ratio )
     while(current_time < target_time):
-        checkHeading(fSH)
+        checkHeading(forwardStartHeading)
     stop_motors()
 
-def checkHeading(fSH):
-    #TODO
+def checkHeading(target_heading, tolerance = 1):
+    global lSpeed
+    global rSpeed
+    global sensor
+    current_heading = get_heading(sensor)
+    error = (target_heading - current_heading) % 360  # Calculate the error between target and current heading
+
+    if error > 180:
+        error -= 360  # Make sure the error is within -180 to 180 degrees range
+
+    if abs(error) > tolerance:
+        if error < 0:
+            # Turn left
+            adjust_steering_angle(-1)  # Placeholder function for left adjustment
+        else:
+            # Turn right
+            adjust_steering_angle(1)  # Placeholder function for right adjustment
+            #a
+    else:
+        print("On course, no steering adjustment needed")
+
+def adjust_steering_angle(error):
+    # Placeholder function to simulate steering adjustment
+    adjust_speed(lSpeed*(-error),rSpeed*error)
 
 
 def backward(distance=1):
