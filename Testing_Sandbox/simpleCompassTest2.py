@@ -113,7 +113,7 @@ if __name__ == "__main__":
     stop_motors
     sleep(3)
     forward()
-    sleep(10)
+    sleep(5)
     stop_motors()
 
     target = -22
