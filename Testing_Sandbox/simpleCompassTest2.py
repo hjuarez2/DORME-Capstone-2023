@@ -90,6 +90,14 @@ def stop_motors():
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.LOW)
 
+def calculate_heading(x, y):
+    heading = math.atan2(y, x)
+    # Convert radians to degrees
+    heading_degrees = math.degrees(heading)
+    # Normalize heading to be between 0 and 360 degrees
+    normalized_heading = (heading_degrees + 360) % 360
+    return normalized_heading
+
 if __name__ == "__main__":
     target = 163.28849548873222
     threshold_angle = 3
@@ -98,7 +106,7 @@ if __name__ == "__main__":
 
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
-        heading = math.atan2(mag_x, mag_y) * (180 / math.pi)
+        heading = calculate_heading(mag_x, mag_y)
 
         rotate()
 
@@ -123,7 +131,7 @@ if __name__ == "__main__":
 
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
-        heading = math.atan2(mag_x, mag_y) * (180 / math.pi)
+        heading = calculate_heading(mag_x, mag_y)
 
         rotate()
 
