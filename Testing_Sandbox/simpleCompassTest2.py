@@ -110,7 +110,7 @@ if __name__ == "__main__":
         heading = calculate_heading(mag_x, mag_y)
         print(heading)
 
-        #rotate()
+        rotate()
 
         if abs(heading - target) <= threshold_angle:
             consecutive_within_threshold += 1
