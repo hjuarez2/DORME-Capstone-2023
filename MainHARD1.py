@@ -83,13 +83,13 @@ def rotate():
     stop_motors()
 
 def findAngle(target):
-    threshold_angle = 3
+    threshold_angle = 1
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 5
 
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
-        heading = math.atan2(mag_y, mag_x) * (180 / math.pi)
+        heading = math.atan2(mag_x, mag_y) * (180 / math.pi)
 
         rotate()
 
@@ -136,14 +136,14 @@ if __name__ == "__main__":
         convertedDistance = 84922.48010*polar_coordinate_pair[0]
         # turn first and then distance
         print("roating to heading: -2")
-        findAngle(-8)
+        findAngle(163.28849548873222)
         sleep(3)
         
         # distance
         print("driving (m): "+ str(convertedDistance))
         #forward(polar_coordinate_pair[0])
         forward()
-        sleep(convertedDistance)
+        sleep(5)
         stop_motors()
         sleep(3)
 
@@ -157,12 +157,12 @@ if __name__ == "__main__":
     print(polar_coordinate_list)
 
     # sleep for 10 seconds
-    sleep(5)
+    sleep(3)
 
     for polar_coordinate_pair in reversed_polar_coordinate_list:
         # turn first and then distance
         print("roating to heading: 68")
-        findAngle(68)
+        findAngle(26.28528081645544)
         sleep(3)
         convertedDistance = 84922.48010*polar_coordinate_pair[0]
        # rotate(polar_coordinate_pair[1])
@@ -170,6 +170,6 @@ if __name__ == "__main__":
         # distance
         print("driving (m): "+ str(convertedDistance))
        # forward(polar_coordinate_pair[0])
-        sleep(convertedDistance)
+        sleep(5)
     GPIO.cleanup()
 
