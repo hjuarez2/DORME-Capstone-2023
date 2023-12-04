@@ -15,7 +15,7 @@ sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.range = Range.RANGE_4_GAUSS
 x_offfset= 12.28
 y_offset = 12.77
-z_offset = -17.86 uT
+z_offset = -17.86
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
