@@ -101,8 +101,6 @@ if __name__ == "__main__":
 
     # array of nodes -> draft connect function
     cartesian_coordinate_list = from_name_to_coordinates(node_name_list)
-    print(cartesian_coordinate_list)
-    print(cartesian_coordinate_list.reverse())
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
 
     for polar_coordinate_pair in polar_coordinate_list:
@@ -119,8 +117,8 @@ if __name__ == "__main__":
 
     # reversing the list
     print("reversing path...")
-    reversed_cartesian_coordinate_list = cartesian_coordinate_list.reverse()
-    reversed_polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
+    reversed_cartesian_coordinate_list = cartesian_coordinate_list[::-1]
+    reversed_polar_coordinate_list = from_coordinates_to_distance(reversed_cartesian_coordinate_list)
     print("new path:")
     print(reversed_cartesian_coordinate_list)
 
