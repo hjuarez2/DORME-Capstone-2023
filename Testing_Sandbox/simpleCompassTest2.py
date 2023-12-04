@@ -107,6 +107,7 @@ if __name__ == "__main__":
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
         heading = calculate_heading(mag_x, mag_y)
+        print(heading)
 
         rotate()
 
