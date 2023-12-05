@@ -160,7 +160,7 @@ if __name__ == "__main__":
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
         print("orienting to "+ str(polar_coordinate_pair[1]))
-        #unblock rotate(polar_coordinate_pair[1])
+        rotate(polar_coordinate_pair[1])
         # distance
         print("Moving forward "+ str(polar_coordinate_pair[0] )+ "meters")
         #unblock forward(polar_coordinate_pair[0])
@@ -181,7 +181,7 @@ if __name__ == "__main__":
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
         print("orienting to "+ str(polar_coordinate_pair[1]))
-        #unblock rotate(polar_coordinate_pair[1])
+        rotate(polar_coordinate_pair[1])
         # distance
         print("Moving forward "+ str(polar_coordinate_pair[0]) + "meters")
         #unblock forward(polar_coordinate_pair[0])
