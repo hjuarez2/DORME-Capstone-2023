@@ -39,7 +39,7 @@ degree_offset = -326.8828
 
 #distance conversion
 timedistance_ratio = 1
-theoreticaldistance_ratio = 1 #change to like 40,000
+theoreticaldistance_ratio = 400 #change to like 40,000
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
@@ -95,7 +95,9 @@ def checkHeading(target_heading, tolerance = 1):
         error -= 360  # Make sure the error is within -180 to 180 degrees range
 
     if abs(error) > tolerance:
-        if error < 0:
+        if(lSpeed == 0 or rSpeed == 0 or lSpeed == 100 or rSpeed == 100):
+            continue
+        elif error < 0:
             # Turn left
             adjust_steering_angle(-1)  # Placeholder function for left adjustment
         else:
