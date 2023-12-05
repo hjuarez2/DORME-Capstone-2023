@@ -62,13 +62,13 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 def rotate(degrees):
-    adjust_speed(30, 30)
+    adjust_speed(40, 40)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
     print("orienting to: "+ str(degrees))
-    while (abs(get_heading(sensor)-degrees) > 5):
+    while (abs(get_heading(sensor)-degrees) > 1):
         continue
     print(get_heading(sensor))
     stop_motors()
