@@ -39,7 +39,7 @@ degree_offset = -326.8828
 
 #distance conversion
 timedistance_ratio = 1
-theoreticaldistance_ratio = 10 #change to like 40,000
+theoreticaldistance_ratio = 1 #change to like 40,000
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
@@ -162,7 +162,7 @@ if __name__ == "__main__":
         rotate(polar_coordinate_pair[1])
         # distance
         print("Moving forward "+ str(polar_coordinate_pair[0] )+ "meters")
-        #unblock forward(polar_coordinate_pair[0])
+        forward(polar_coordinate_pair[0])
 
         # we can't determine if we are at next node because of GPS
 
