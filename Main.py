@@ -38,8 +38,8 @@ z_offset = 31.74
 degree_offset = -326.8828
 
 #distance conversion
-timedistance_ratio = 1
-theoreticaldistance_ratio = 100 #change to like 40,000
+timedistance_ratio = 1000
+theoreticaldistance_ratio = 40000 #change to like 40,000
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
@@ -84,7 +84,7 @@ def forward(distance = 1):
         checkHeading(forwardStartHeading)
     stop_motors()
 
-def checkHeading(target_heading, tolerance = 1):
+def checkHeading(target_heading, tolerance = 0.5):
     global lSpeed
     global rSpeed
     global sensor
