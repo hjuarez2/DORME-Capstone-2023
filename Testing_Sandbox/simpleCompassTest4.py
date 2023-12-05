@@ -104,5 +104,5 @@ while True:
     print("heading: {:.2f} degrees".format(get_heading(sensor)))
     #sleep(1)
 
-    rotate(180)
+    #rotate(180)
     #sleep(1)
