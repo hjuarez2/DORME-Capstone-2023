@@ -183,6 +183,7 @@ if __name__ == "__main__":
 
     print("Delivery Successful!")
     for _ in range(4):
+        continue
     #unblock rotate(180)
     #unblock rotate(360)
     GPIO.cleanup()
