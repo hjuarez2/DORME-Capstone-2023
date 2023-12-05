@@ -128,7 +128,7 @@ def rotate(degrees):
     print("orienting to: "+ str(degrees))
     while (abs(get_heading(sensor)-degrees) > 5):
         continue
-    print(abs(get_heading(sensor)-degrees))
+    print(get_heading(sensor))
     stop_motors()
 
 def adjust_speed(left, right):
