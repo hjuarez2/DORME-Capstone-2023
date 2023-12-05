@@ -119,13 +119,13 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
-def rotate(degrees=1):
+def rotate(degrees):
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    while ((get_heading(sensor)-degrees) > 1):
+    while ((get_heading(sensor)-degrees) > 5):
         continue
     stop_motors()
 
