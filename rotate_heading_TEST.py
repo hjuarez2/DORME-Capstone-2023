@@ -120,12 +120,12 @@ def backward(distance=1):
     GPIO.output(in4,GPIO.HIGH)
 
 def rotate(degrees):
-    global sensor
     adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
+    print("orienting to: "+ str(degrees))
     while (abs(get_heading(sensor)-degrees) > 5):
         continue
     stop_motors()
