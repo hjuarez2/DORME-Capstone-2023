@@ -68,7 +68,7 @@ def rotate(degrees):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
     print("orienting to: "+ str(degrees))
-    while (abs(get_heading(sensor)-degrees) > 1.5
+    while (abs(get_heading(sensor)-degrees) > 1.5)
         continue
     print(get_heading(sensor))
     stop_motors()
