@@ -24,7 +24,7 @@ Magnetometer Calibration' learning guide (c)2020.
 import time
 import board
 import busio
-from adafruit_lis3mdl import LIS3MDL, Rate
+from adafruit_lis3mdl import LIS3MDL, Rate, Range
 import adafruit_lis3mdl
 
 SAMPLE_SIZE = 5000
