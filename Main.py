@@ -51,9 +51,7 @@ def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
     magnet_x += x_offfset
     magnet_y +=y_offset
-    raw_heading = vector_2_degrees(magnet_x, magnet_y)
-    corrected_heading = (raw_heading + degree_offset) % 360
-    return corrected_heading
+    return vector_2_degrees(magnet_x, magnet_y)
 
 #GPIO initialization
 GPIO.setmode(GPIO.BCM)
@@ -119,14 +117,15 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
-def rotate(degrees=1):
+def rotate(degrees):
     adjust_speed(40, 40)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
-    while (abs(get_heading(sensor)-degrees) > 2):
+    while (abs(get_heading(sensor)-degrees) > 1.5):
         continue
+    print(get_heading(sensor))
     stop_motors()
 
 def adjust_speed(left, right):
