@@ -10,6 +10,7 @@ import board
 import math
 import adafruit_lis3mdl
 import time
+from adafruit_lis3mdl import  Range
 
 
 
