@@ -83,7 +83,7 @@ def forward(distance = 1):
     print(target_time)
     while(current_time < target_time):
         checkHeading(forwardStartHeading)
-        print(current_time)
+        current_time = time.time()
     stop_motors()
 
 def checkHeading(target_heading, tolerance = 0.5):
