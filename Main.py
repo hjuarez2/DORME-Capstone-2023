@@ -107,7 +107,7 @@ def checkHeading(target_heading, tolerance = 1):
 
 def adjust_steering_angle(error):
     # Placeholder function to simulate steering adjustment
-    adjust_speed(lSpeed*(-error),rSpeed*error)
+    adjust_speed(lSpeed+(-error),rSpeed+error)
 
 
 def backward(distance=1):
