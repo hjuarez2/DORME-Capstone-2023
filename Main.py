@@ -39,7 +39,7 @@ degree_offset = -326.8828
 
 #distance conversion
 timedistance_ratio = 1
-theoreticaldistance_ratio = 400 #change to like 40,000
+theoreticaldistance_ratio = 4000 #change to like 40,000
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
