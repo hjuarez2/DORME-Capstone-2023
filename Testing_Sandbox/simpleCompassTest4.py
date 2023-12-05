@@ -48,7 +48,7 @@ p2.start(25)
 
 sensor.range = Range.RANGE_4_GAUSS
 x_offfset= -16.18
-y_offset = =13.41
+y_offset = -13.41
 z_offset = 31.74
 degree_offset = -326.8828
 
