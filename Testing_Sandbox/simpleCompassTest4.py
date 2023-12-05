@@ -8,14 +8,16 @@ import board
 import adafruit_lis3mdl
 from adafruit_lis3mdl import  Range
 
+
+
 i2c = board.I2C()  # uses board.SCL and board.SDA
 # i2c = board.STEMMA_I2C()  # For using the built-in STEMMA QT connector on a microcontroller
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 
 sensor.range = Range.RANGE_4_GAUSS
-x_offfset= 12.40
-y_offset = 20.42
-z_offset = -29.49
+x_offfset= -12.40
+y_offset = -20.42
+z_offset = -9.49
 degree_offset = -326.8828
 
 total_list=0
