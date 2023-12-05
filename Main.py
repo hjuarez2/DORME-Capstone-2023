@@ -94,14 +94,16 @@ def checkHeading(target_heading, tolerance = 1):
     if error > 180:
         error -= 360  # Make sure the error is within -180 to 180 degrees range
 
-    print(error)
+    #negative error is drifting to right
+    #positive error is drifting to left
+
 
     if abs(error) > tolerance:
-        if error < 0 and lSpeed < 0:
+        if error < 0 and rSpeed < 75:
             # Turn left
             print("Adjusting left")
             adjust_steering_angle(-1)  # Placeholder function for left adjustment
-        elif error > 0 and lSpeed > 0:
+        elif error > 0 and lSpeed < 75:
             # Turn right
             print("Adjusting right")
             adjust_steering_angle(1)  # Placeholder function for right adjustment
@@ -109,7 +111,7 @@ def checkHeading(target_heading, tolerance = 1):
 
 def adjust_steering_angle(error):
     # Placeholder function to simulate steering adjustment
-    adjust_speed(lSpeed+(-error),rSpeed+error)
+    adjust_speed(lSpeed+(error),rSpeed+(-error))
 
 
 def backward(distance=1):
