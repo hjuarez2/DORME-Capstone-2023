@@ -145,13 +145,8 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    try:
-        while True:
-            rotate(180)  # Rotate to 0 degrees
+    while True:
+            rotate(0)  # Rotate to 0 degrees
             time.sleep(1)
             rotate(180)  # Rotate to 180 degrees
             time.sleep(1)
-
-    except KeyboardInterrupt:
-        print("Interrupted by user")
-        GPIO.cleanup()
