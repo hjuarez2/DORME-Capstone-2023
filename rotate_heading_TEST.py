@@ -51,9 +51,7 @@ def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
     magnet_x += x_offfset
     magnet_y +=y_offset
-    raw_heading = vector_2_degrees(magnet_x, magnet_y)
-    corrected_heading = (raw_heading + degree_offset) % 360
-    return corrected_heading
+    return vector_2_degrees(magnet_x, magnet_y)
 
 #GPIO initialization
 GPIO.setmode(GPIO.BCM)
