@@ -72,7 +72,7 @@ p2.start(25)
 
 def forward(distance = 1):
     global forwardStartHeading
-    forwardStartHeading = get_heading(_sensor)
+    forwardStartHeading = get_heading(sensor)
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
