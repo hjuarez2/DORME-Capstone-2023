@@ -99,13 +99,13 @@ def checkHeading(target_heading, tolerance = 1):
             pass
         elif error < 0:
             # Turn left
+            print("Adjusting left")
             adjust_steering_angle(-1)  # Placeholder function for left adjustment
         else:
             # Turn right
+            print("Adjusting right")
             adjust_steering_angle(1)  # Placeholder function for right adjustment
-            #a
-    else:
-        print("On course, no steering adjustment needed")
+            
 
 def adjust_steering_angle(error):
     # Placeholder function to simulate steering adjustment
