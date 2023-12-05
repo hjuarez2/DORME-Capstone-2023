@@ -32,5 +32,5 @@ def get_heading(_sensor):
 
 
 while True:
-    print("heading: {:.2f} degrees".format(get_heading(sensor)))
+    print("heading: {:.2f} degrees".format(get_heading(sensor)-224))
     time.sleep(0.2)
