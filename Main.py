@@ -172,7 +172,7 @@ if __name__ == "__main__":
     cartesian_coordinate_list = cartesian_coordinate_list[::-1]
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
 
-    print("The return route is: "+node_name_list[::-1])
+    print("The return route is: "+str(node_name_list[::-1]))
     print("Returning in 10 seconds...")
 
     # sleep for 10 seconds
