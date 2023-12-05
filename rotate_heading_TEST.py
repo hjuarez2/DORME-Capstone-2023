@@ -143,51 +143,14 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    start_point = input("Enter the starting point: ")
-    end_point = input("Enter the end point: ")
-    node_name_list = short_path(start_point, end_point)
-    print("Shortest Path:" + node_name_list)
+    try:
+        while True:
+            rotate(0)  # Rotate to 0 degrees
+            time.sleep(1)
+            rotate(180)  # Rotate to 180 degrees
+            time.sleep(1)
 
-    cartesian_coordinate_list = []
-    polar_coordinate_list = []
-
-    # array of nodes -> draft connect function
-    cartesian_coordinate_list = from_name_to_coordinates(node_name_list)
-    polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
-
-    for polar_coordinate_pair in polar_coordinate_list:
-        # turn first and then distance
-        print("orienting to "+ polar_coordinate_pair[1])
-        #unblock rotate(polar_coordinate_pair[1])
-        # distance
-        print("Moving forward "+ polar_coordinate_pair[0] + "meters")
-        #unblock forward(polar_coordinate_pair[0])
-
-        # we can't determine if we are at next node because of GPS
-
-    # reversing the list
-    print("Arrived at destination. Calculating return route...")
-    cartesian_coordinate_list = cartesian_coordinate_list[::-1]
-    polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
-
-    print("The return route is: "+node_name_list[::-1])
-    print("Returning in 10 seconds...")
-
-    # sleep for 10 seconds
-    sleep(10)
-
-    for polar_coordinate_pair in polar_coordinate_list:
-        # turn first and then distance
-        print("orienting to "+ polar_coordinate_pair[1])
-        #unblock rotate(polar_coordinate_pair[1])
-        # distance
-        print("Moving forward "+ polar_coordinate_pair[0] + "meters")
-        #unblock forward(polar_coordinate_pair[0])
-
-    print("Delivery Successful!")
-    for _ in range(4):
-        continue
-    #unblock rotate(180)
-    #unblock rotate(360)
-    GPIO.cleanup()
+    except KeyboardInterrupt:
+        print("Interrupted by user")
+        GPIO.cleanup()
 
