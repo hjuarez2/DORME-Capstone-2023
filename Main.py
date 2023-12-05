@@ -39,6 +39,7 @@ degree_offset = -326.8828
 
 #distance conversion
 timedistance_ratio = 1
+theoreticaldistance_ratio = 1 #change to like 40,000
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
@@ -147,7 +148,7 @@ if __name__ == "__main__":
     start_point = input("Enter the starting point: ")
     end_point = input("Enter the end point: ")
     node_name_list = short_path(start_point, end_point)
-    print("Shortest Path:" + node_name_list)
+    print("Shortest Path:" + str(node_name_list))
 
     cartesian_coordinate_list = []
     polar_coordinate_list = []
