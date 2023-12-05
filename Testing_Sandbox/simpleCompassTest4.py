@@ -97,12 +97,12 @@ def get_heading(_sensor):
 
 
 while True:
-    #rotate(0)
+    rotate(0)
    # total_list+=get_heading(sensor)
     #samples+=1
     #print(total_list/samples)
     print("heading: {:.2f} degrees".format(get_heading(sensor)))
     #sleep(1)
 
-    #rotate(180)
+    rotate(180)
     #sleep(1)
