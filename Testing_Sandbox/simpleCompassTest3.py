@@ -16,7 +16,7 @@ sensor.range = Range.RANGE_4_GAUSS
 x_offfset= -12.40
 y_offset = -20.42
 z_offset = 29.49
-degree_offset = 0
+degree_offset = 326.8828
 
 total_list=0
 samples = 0
