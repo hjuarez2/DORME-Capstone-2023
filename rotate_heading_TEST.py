@@ -11,6 +11,7 @@ import math
 import adafruit_lis3mdl
 from adafruit_lis3mdl import  Range
 import time
+from math import atan2, degrees
 
 
 
