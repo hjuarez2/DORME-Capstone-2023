@@ -120,7 +120,7 @@ def backward(distance=1):
     GPIO.output(in4,GPIO.HIGH)
 
 def rotate(degrees):
-    adjust_speed(40, 40)
+    adjust_speed(30, 30)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
@@ -148,5 +148,5 @@ if __name__ == "__main__":
     while True:
             rotate(0)  # Rotate to 0 degrees
             time.sleep(1)
-            rotate(180)  # Rotate to 180 degrees
+            rotate(90)  # Rotate to 180 degrees
             time.sleep(1)
