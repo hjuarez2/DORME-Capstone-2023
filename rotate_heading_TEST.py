@@ -146,12 +146,8 @@ def stop_motors():
 
 if __name__ == "__main__":
     while True:
-            '''
+        
             rotate(0)  # Rotate to 0 degrees
             time.sleep(1)
             rotate(90)  # Rotate to 180 degrees
             time.sleep(1)
-            '''
-
-            print("heading: {:.2f} degrees".format(get_heading(sensor)))
-            time.sleep(0.5)
