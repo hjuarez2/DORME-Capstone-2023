@@ -32,7 +32,7 @@ SAMPLE_SIZE = 5000
 i2c = busio.I2C(board.SCL, board.SDA)
 magnetometer = LIS3MDL(i2c)
 magnetometer.Rate = Rate.RATE_155_HZ
-sensor.range = Range.RANGE_4_GAUSS
+magnetometer.range = Range.RANGE_4_GAUSS
 
 while True:
     print("=" * 40)
