@@ -38,7 +38,7 @@ z_offset = 31.74
 degree_offset = -326.8828
 
 #distance conversion
-timedistance_ratio = 1000
+timedistance_ratio = 500
 theoreticaldistance_ratio = 40000 #change to like 40,000
 
 def vector_2_degrees(x, y):
