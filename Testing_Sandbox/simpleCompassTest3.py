@@ -42,4 +42,4 @@ while True:
     #samples+=1
     #print(total_list/samples)
     print("heading: {:.2f} degrees".format(get_heading(sensor)))
-    time.sleep(0.2)
+    time.sleep(0.5)
