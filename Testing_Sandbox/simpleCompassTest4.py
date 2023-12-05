@@ -55,6 +55,12 @@ degree_offset = -326.8828
 total_list=0
 samples = 0
 
+def stop_motors():
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.LOW)
+
 def rotate(degrees):
     adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
