@@ -16,7 +16,7 @@ sensor.range = Range.RANGE_4_GAUSS
 x_offfset= -12.40
 y_offset = -20.42
 z_offset = 29.49
-degree_offset = 326.8828
+degree_offset = -326.8828
 
 total_list=0
 samples = 0
@@ -32,12 +32,14 @@ def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
     magnet_x += x_offfset
     magnet_y +=y_offset
-    return vector_2_degrees(magnet_x, magnet_y)
+    raw_heading = vector_2_degrees(magnet_x, magnet_y)
+    corrected_heading = (raw_heading + degree_offset) % 360
+    return corrected_heading
 
 
 while True:
-    total_list+=get_heading(sensor)
-    samples+=1
-    print(total_list/samples)
-    print("heading: {:.2f} degrees".format(get_heading(sensor)+degree_offset))
+   # total_list+=get_heading(sensor)
+    #samples+=1
+    #print(total_list/samples)
+    print("heading: {:.2f} degrees".format(get_heading(sensor)))
     time.sleep(0.2)
