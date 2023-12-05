@@ -16,6 +16,7 @@ sensor.range = Range.RANGE_4_GAUSS
 x_offfset= -12.40
 y_offset = -20.42
 z_offset = 29.49
+degree_offset = 0
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
@@ -32,5 +33,5 @@ def get_heading(_sensor):
 
 
 while True:
-    print("heading: {:.2f} degrees".format(get_heading(sensor)-224))
+    print("heading: {:.2f} degrees".format(get_heading(sensor)+degree_offset))
     time.sleep(0.2)
