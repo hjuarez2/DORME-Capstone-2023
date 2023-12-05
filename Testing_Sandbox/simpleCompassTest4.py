@@ -6,7 +6,7 @@
 from math import atan2, degrees
 import board
 import adafruit_lis3mdl
-from adafruit_lis3mdl import  Range
+from adafruit_lis3mdl import  Range, Rate
 import RPi.GPIO as GPIO          
 from time import sleep
 import board
@@ -16,7 +16,7 @@ import board
 i2c = board.I2C()  # uses board.SCL and board.SDA
 # i2c = board.STEMMA_I2C()  # For using the built-in STEMMA QT connector on a microcontroller
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
-sensor.Rate = adafruit_lis3mdl.RATE_155_HZ
+sensor.Rate = Rate.RATE_155_HZ
 sensor.range = Range.RANGE_4_GAUSS
 
 # Pin setup and Constants

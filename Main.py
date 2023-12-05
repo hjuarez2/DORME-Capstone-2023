@@ -10,7 +10,7 @@ import board
 from math import atan2, degrees
 import adafruit_lis3mdl
 import time
-from adafruit_lis3mdl import  Range
+from adafruit_lis3mdl import  Range, Rate
 
 
 
@@ -31,7 +31,7 @@ forwardStartHeading = 0
 #compass setup and offset calibration
 i2c = board.I2C()
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
-sensor.Rate = adafruit_lis3mdl.RATE_155_HZ #ULTRA Acccurate performance
+sensor.Rate = Rate.RATE_155_HZ #ULTRA Acccurate performance
 sensor.range = Range.RANGE_4_GAUSS
 x_offfset= -15.35
 y_offset = -12.07
