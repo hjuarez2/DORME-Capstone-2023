@@ -9,7 +9,6 @@ import adafruit_lis3mdl
 from adafruit_lis3mdl import  Range
 import RPi.GPIO as GPIO          
 from time import sleep
-from pathfind import short_path
 import board
 
 
