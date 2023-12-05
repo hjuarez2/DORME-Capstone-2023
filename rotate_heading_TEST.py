@@ -147,7 +147,7 @@ def stop_motors():
 if __name__ == "__main__":
     try:
         while True:
-            rotate(0)  # Rotate to 0 degrees
+            rotate(180)  # Rotate to 0 degrees
             time.sleep(1)
             rotate(180)  # Rotate to 180 degrees
             time.sleep(1)
