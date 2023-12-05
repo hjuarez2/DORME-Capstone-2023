@@ -13,9 +13,9 @@ i2c = board.I2C()  # uses board.SCL and board.SDA
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 
 sensor.range = Range.RANGE_4_GAUSS
-x_offfset= 10.46
-y_offset = 13.97
-z_offset = -15.70
+x_offfset= -12.40
+y_offset = -20.42
+z_offset = 29.49
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
