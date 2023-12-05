@@ -33,9 +33,9 @@ i2c = board.I2C()
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.Rate = Rate.RATE_155_HZ #ULTRA Acccurate performance
 sensor.range = Range.RANGE_4_GAUSS
-x_offfset= -15.35
-y_offset = -12.07
-z_offset = 31.74
+x_offfset= -6.18
+y_offset = -15.63
+z_offset = 38.71
 degree_offset = -326.8828
 
 
@@ -169,9 +169,11 @@ if __name__ == "__main__":
         # turn first and then distance
         print("orienting to "+ str(polar_coordinate_pair[1]))
         rotate(polar_coordinate_pair[1])
+        sleep(0.5)
         # distance
         print("Moving forward "+ str(polar_coordinate_pair[0] )+ "meters")
         forward(polar_coordinate_pair[0])
+        sleep(0.5)
 
         # we can't determine if we are at next node because of GPS
 
@@ -190,9 +192,11 @@ if __name__ == "__main__":
         # turn first and then distance
         print("orienting to "+ str(polar_coordinate_pair[1]))
         rotate(polar_coordinate_pair[1])
+        sleep(0.5)
         # distance
         print("Moving forward "+ str(polar_coordinate_pair[0]) + "meters")
         forward(polar_coordinate_pair[0])
+        sleep(0.5)
 
     print("Delivery Successful!")
     for _ in range(4):
