@@ -7,7 +7,7 @@ from pathfind import short_path
 from Testing_Sandbox.draft_connect import from_name_to_coordinates
 from Testing_Sandbox.draft_connect import from_coordinates_to_distance
 import board
-import math
+from math import atan2, degrees
 import adafruit_lis3mdl
 import time
 from adafruit_lis3mdl import  Range
