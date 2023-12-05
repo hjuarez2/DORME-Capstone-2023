@@ -24,14 +24,14 @@ Magnetometer Calibration' learning guide (c)2020.
 import time
 import board
 import busio
-from adafruit_lis3mdl import LIS3MDL
+from adafruit_lis3mdl import LIS3MDL, Rate
 import adafruit_lis3mdl
 
 SAMPLE_SIZE = 5000
 
 i2c = busio.I2C(board.SCL, board.SDA)
 magnetometer = LIS3MDL(i2c)
-magnetometer.Rate = adafruit_lis3mdl.RATE_155_HZ
+magnetometer.Rate = Rate.RATE_155_HZ
 sensor.range = Range.RANGE_4_GAUSS
 
 while True:
