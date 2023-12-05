@@ -189,7 +189,7 @@ if __name__ == "__main__":
         rotate(polar_coordinate_pair[1])
         # distance
         print("Moving forward "+ str(polar_coordinate_pair[0]) + "meters")
-        #unblock forward(polar_coordinate_pair[0])
+        forward(polar_coordinate_pair[0])
 
     print("Delivery Successful!")
     for _ in range(4):
