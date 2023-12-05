@@ -3,11 +3,12 @@
 
 import RPi.GPIO as GPIO          
 from time import sleep
-
+from pathfind import short_path
+from Testing_Sandbox.draft_connect import from_name_to_coordinates
+from Testing_Sandbox.draft_connect import from_coordinates_to_distance
 import board
 import math
 import adafruit_lis3mdl
-from adafruit_lis3mdl import Range
 import time
 
 
@@ -152,4 +153,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("Interrupted by user")
         GPIO.cleanup()
-
