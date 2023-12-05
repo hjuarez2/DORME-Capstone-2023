@@ -18,6 +18,9 @@ y_offset = -20.42
 z_offset = 29.49
 degree_offset = 0
 
+total_list=0
+samples = 0
+
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
     if angle < 0:
@@ -33,5 +36,8 @@ def get_heading(_sensor):
 
 
 while True:
+    total_list+=get_heading(sensor)
+    samples+=1
+    print(total_list/samples)
     print("heading: {:.2f} degrees".format(get_heading(sensor)+degree_offset))
     time.sleep(0.2)
