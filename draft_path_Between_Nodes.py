@@ -20,6 +20,9 @@ def two_coordinates_to_distance_and_bearing(coord_pair_from, coord_pair_to):
     # Convert the angle from radians to degrees
     angle_degrees = math.degrees(angle_radians)
 
+    # Ensure the angle is within the range of 0 to 360 degrees
+    angle_degrees = angle_degrees % 360
+
     # returning a tuple (distance between nodes, angle between nodes)
     return (distance, angle_degrees)
 
