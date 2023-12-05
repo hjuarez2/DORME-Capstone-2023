@@ -80,8 +80,10 @@ def forward(distance = 1):
     GPIO.output(in4,GPIO.LOW)
     current_time = time.time()
     target_time = current_time + (distance * timedistance_ratio )
+    print(target_time)
     while(current_time < target_time):
         checkHeading(forwardStartHeading)
+        print(current_time)
     stop_motors()
 
 def checkHeading(target_heading, tolerance = 0.5):
