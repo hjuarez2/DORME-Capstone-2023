@@ -7,6 +7,7 @@ from time import sleep
 import board
 import math
 import adafruit_lis3mdl
+from adafruit_lis3mdl import Range
 import time
 
 
