@@ -27,7 +27,7 @@ import busio
 from adafruit_lis3mdl import LIS3MDL
 import adafruit_lis3mdl
 
-SAMPLE_SIZE = 2000
+SAMPLE_SIZE = 5000
 
 i2c = busio.I2C(board.SCL, board.SDA)
 magnetometer = LIS3MDL(i2c)
