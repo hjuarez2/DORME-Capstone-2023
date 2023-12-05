@@ -48,7 +48,6 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
-sensor.range = Range.RANGE_4_GAUSS
 x_offfset= -6.18
 y_offset = -15.63
 z_offset = 38.71
