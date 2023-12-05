@@ -9,6 +9,7 @@ from Testing_Sandbox.draft_connect import from_coordinates_to_distance
 import board
 import math
 import adafruit_lis3mdl
+from adafruit_lis3mdl import  Range
 import time
 
 
