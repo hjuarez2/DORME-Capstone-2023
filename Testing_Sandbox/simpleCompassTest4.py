@@ -96,7 +96,7 @@ def get_heading(_sensor):
 
 
 while True:
-    rotate(90)
+    rotate(0)
    # total_list+=get_heading(sensor)
     #samples+=1
     #print(total_list/samples)
