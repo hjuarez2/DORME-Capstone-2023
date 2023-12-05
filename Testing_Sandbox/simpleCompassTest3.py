@@ -12,7 +12,11 @@ i2c = board.I2C()  # uses board.SCL and board.SDA
 # i2c = board.STEMMA_I2C()  # For using the built-in STEMMA QT connector on a microcontroller
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 
+sensor.Rate = adafruit_lis3mdl.RATE_155_HZ
+
 sensor.range = Range.RANGE_4_GAUSS
+
+
 x_offfset= -15.35
 y_offset = -12.07
 z_offset = 31.74

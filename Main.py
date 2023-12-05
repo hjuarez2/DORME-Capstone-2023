@@ -31,11 +31,14 @@ forwardStartHeading = 0
 #compass setup and offset calibration
 i2c = board.I2C()
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
+sensor.Rate = adafruit_lis3mdl.RATE_155_HZ #ULTRA Acccurate performance
 sensor.range = Range.RANGE_4_GAUSS
 x_offfset= -15.35
 y_offset = -12.07
 z_offset = 31.74
 degree_offset = -326.8828
+
+
 
 #distance conversion
 timedistance_ratio = 500
