@@ -33,8 +33,8 @@ i2c = board.I2C()
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.Rate = Rate.RATE_155_HZ #ULTRA Acccurate performance
 sensor.range = Range.RANGE_4_GAUSS
-x_offfset= -1.50
-y_offset = -16.63
+x_offfset= -16.11
+y_offset = -14.28
 z_offset = 32.02
 degree_offset = -17
 print("Magnetometer Range: %d Gauss" % Range.string[sensor.range])
