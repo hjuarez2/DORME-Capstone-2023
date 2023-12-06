@@ -16,9 +16,9 @@ sensor.Rate = Rate.RATE_155_HZ
 sensor.range = Range.RANGE_4_GAUSS
 
 
-x_offfset= -6.18
-y_offset = -15.63
-z_offset = 38.71
+x_offfset= -1.50
+y_offset = -16.63
+z_offset = 32.02
 degree_offset = -326.8828
 
 total_list=0
