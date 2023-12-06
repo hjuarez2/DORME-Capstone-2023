@@ -51,7 +51,7 @@ p2.start(25)
 x_offfset= -1.50
 y_offset = -16.63
 z_offset = 32.02
-degree_offset = -17
+degree_offset = 17
 
 total_list=0
 samples = 0
