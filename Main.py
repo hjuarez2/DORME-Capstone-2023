@@ -186,10 +186,10 @@ if __name__ == "__main__":
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
 
     print("The return route is: "+str(node_name_list[::-1]))
-    print("Returning in 10 seconds...")
+    print("Returning in 5 seconds...")
 
     # sleep for 10 seconds
-    sleep(10)
+    sleep(5)
 
     for polar_coordinate_pair in polar_coordinate_list:
         # turn first and then distance
