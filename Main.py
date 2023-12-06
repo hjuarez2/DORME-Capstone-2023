@@ -136,7 +136,6 @@ def rotate(degrees):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
     while (abs(get_heading(sensor)-degrees) > 1):
-        print(get_heading(sensor))
         continue
     print(get_heading(sensor))
     stop_motors()
@@ -205,7 +204,6 @@ if __name__ == "__main__":
     print("Delivery Successful!")
     for _ in range(4):
         continue
-    rotate(180)
-    rotate(360)
+    #unblock dance()
     GPIO.cleanup()
 
