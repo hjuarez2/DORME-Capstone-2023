@@ -26,6 +26,7 @@ samples = 0
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
+    angle+=degree_offset
     if angle < 0:
         angle += 360
     return angle
@@ -35,12 +36,8 @@ def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
     magnet_x += x_offfset
     magnet_y +=y_offset
-    heading = vector_2_degrees(magnet_x, magnet_y)
-    # Subtract the degree_offset to adjust the heading
-    heading -= degree_offset
-    if heading < 0:
-        heading += 360
-    return heading
+    return vector_2_degrees(magnet_x, magnet_y)
+    
 
 
 while True:
