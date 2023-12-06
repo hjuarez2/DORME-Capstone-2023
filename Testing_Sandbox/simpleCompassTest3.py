@@ -19,13 +19,14 @@ sensor.range = Range.RANGE_4_GAUSS
 x_offfset= -1.50
 y_offset = -16.63
 z_offset = 32.02
-degree_offset = -17
+degree_offset = 10
 
 total_list=0
 samples = 0
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
+    angle -= degree_offset
     if angle < 0:
         angle += 360
     return angle
