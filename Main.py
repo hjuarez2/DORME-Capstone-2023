@@ -33,19 +33,22 @@ i2c = board.I2C()
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.Rate = Rate.RATE_155_HZ #ULTRA Acccurate performance
 sensor.range = Range.RANGE_4_GAUSS
-x_offfset= -16.11
+x_offset= -16.11
 y_offset = -14.28
 z_offset = 32.02
 degree_offset = -17
 print("Magnetometer Range: %d Gauss" % Range.string[sensor.range])
 print("Magnetometer data_rate is", Rate.string[sensor.data_rate], "HZ")
 print("Magnetometer performance_mode is", PerformanceMode.string[sensor.performance_mode])
+print("Magnetometer x_offset is ", x_offset)
+print("Magnetometer x_offset is ", y_offset)
+print("Magnetometer x_offset is ", z_offset)
+
 
 
 
 #distance conversion
-timedistance_ratio = 500
-theoreticaldistance_ratio = 40000 #change to like 40,000
+timedistance_ratio = 1
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
@@ -55,7 +58,7 @@ def vector_2_degrees(x, y):
 
 def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
-    magnet_x += x_offfset
+    magnet_x += x_offset
     magnet_y +=y_offset
     return vector_2_degrees(magnet_x, magnet_y)
 
