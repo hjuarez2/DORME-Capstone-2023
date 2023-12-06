@@ -136,6 +136,7 @@ def rotate(degrees):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
     while (abs(get_heading(sensor)-degrees) > 1):
+        sleep(0.01)
         continue
     print(get_heading(sensor))
     stop_motors()
@@ -172,11 +173,11 @@ if __name__ == "__main__":
         # turn first and then distance
         print("orienting to "+ str(polar_coordinate_pair[1]))
         rotate(polar_coordinate_pair[1])
-        sleep(0.5)
+        sleep(1)
         # distance
         print("Moving forward "+ str(polar_coordinate_pair[0] )+ "meters")
         forward(polar_coordinate_pair[0])
-        sleep(0.5)
+        sleep(1)
 
         # we can't determine if we are at next node because of GPS
 
@@ -195,11 +196,11 @@ if __name__ == "__main__":
         # turn first and then distance
         print("orienting to "+ str(polar_coordinate_pair[1]))
         rotate(polar_coordinate_pair[1])
-        sleep(0.5)
+        sleep(1)
         # distance
         print("Moving forward "+ str(polar_coordinate_pair[0]) + "meters")
         forward(polar_coordinate_pair[0])
-        sleep(0.5)
+        sleep(1)
 
     print("Delivery Successful!")
     for _ in range(4):
