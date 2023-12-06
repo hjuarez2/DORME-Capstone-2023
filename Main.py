@@ -10,7 +10,7 @@ import board
 from math import atan2, degrees
 import adafruit_lis3mdl
 import time
-from adafruit_lis3mdl import  Range, Rate
+from adafruit_lis3mdl import  Range, Rate, PerformanceMode
 
 
 
@@ -37,6 +37,9 @@ x_offfset= -6.18
 y_offset = -15.63
 z_offset = 38.71
 degree_offset = -326.8828
+print("Magnetometer Range: %d Gauss" % Range.string[sensor.range])
+print("Magnetometer data_rate is", Rate.string[sensor.data_rate], "HZ")
+print("Magnetometer performance_mode is", PerformanceMode.string[sensor.performance_mode])
 
 
 
