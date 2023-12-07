@@ -81,7 +81,7 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance = 1):
-    adjust_speed(75, 75)
+    adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
@@ -112,7 +112,7 @@ def checkHeading(target_heading, tolerance = 0.5):
         if error < 0 and rSpeed < 99:
             # Turn left
             print("Adjusting left")
-            adjust_steering_angle(-0.25)  # Placeholder function for left adjustment
+            adjust_steering_angle(-0.025)  # Placeholder function for left adjustment
         elif error > 0 and lSpeed < 99:
             # Turn right
             print("Adjusting right")
