@@ -36,7 +36,7 @@ sensor.range = Range.RANGE_4_GAUSS
 x_offset= -6.88
 y_offset = -18.28
 z_offset = 68.47
-degree_offset = -11
+degree_offset = -13
 print("Magnetometer Range: %d Gauss" % Range.string[sensor.range])
 print("Magnetometer data_rate is", Rate.string[sensor.data_rate], "HZ")
 print("Magnetometer performance_mode is", PerformanceMode.string[sensor.performance_mode])
@@ -81,7 +81,6 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance = 1):
-    global forwardStartHeading
     #forwardStartHeading = get_heading(sensor)
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
