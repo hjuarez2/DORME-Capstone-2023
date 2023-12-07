@@ -100,7 +100,7 @@ def checkHeading(target_heading, tolerance = 0.5):
     global sensor
     current_heading = get_heading(sensor)
     error = (target_heading - current_heading) % 360  # Calculate the error between target and current heading
-
+    print(error)
     if error > 180:
         error -= 360  # Make sure the error is within -180 to 180 degrees range
 
