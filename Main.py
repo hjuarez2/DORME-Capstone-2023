@@ -41,8 +41,8 @@ print("Magnetometer Range: %d Gauss" % Range.string[sensor.range])
 print("Magnetometer data_rate is", Rate.string[sensor.data_rate], "HZ")
 print("Magnetometer performance_mode is", PerformanceMode.string[sensor.performance_mode])
 print("Magnetometer x_offset is ", x_offset)
-print("Magnetometer x_offset is ", y_offset)
-print("Magnetometer x_offset is ", z_offset)
+print("Magnetometer y_offset is ", y_offset)
+print("Magnetometer z_offset is ", z_offset)
 
 
 
