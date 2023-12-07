@@ -48,9 +48,9 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
-x_offfset= -16.11
-y_offset = -14.28
-z_offset = 32.02
+x_offset= -1.90
+y_offset = -17.63
+z_offset = 84.87
 degree_offset = 17
 
 total_list=0
