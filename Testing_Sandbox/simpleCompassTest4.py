@@ -91,7 +91,7 @@ def vector_2_degrees(x, y):
 
 def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
-    magnet_x += x_offfset
+    magnet_x += x_offset
     magnet_y +=y_offset
     return vector_2_degrees(magnet_x, magnet_y)
 
