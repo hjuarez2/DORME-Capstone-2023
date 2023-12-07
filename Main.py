@@ -81,7 +81,7 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance = 1):
-    #forwardStartHeading = get_heading(sensor)
+    forwardStartHeading = get_heading(sensor)
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
@@ -133,7 +133,6 @@ def backward(distance=1):
     GPIO.output(in4,GPIO.HIGH)
 
 def rotate(degrees):
-    forwardStartHeading = degrees
     adjust_speed(35, 35)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
