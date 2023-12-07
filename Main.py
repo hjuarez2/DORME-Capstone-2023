@@ -109,11 +109,11 @@ def checkHeading(target_heading, tolerance = 0.5):
 
 
     if abs(error) > tolerance:
-        if error < 0 and rSpeed < 75:
+        if error < 0 and rSpeed < 100:
             # Turn left
             print("Adjusting left")
             adjust_steering_angle(-0.01)  # Placeholder function for left adjustment
-        elif error > 0 and lSpeed < 75:
+        elif error > 0 and lSpeed < 100:
             # Turn right
             print("Adjusting right")
             adjust_steering_angle(0.01)  # Placeholder function for right adjustment
