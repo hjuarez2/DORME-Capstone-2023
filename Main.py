@@ -134,7 +134,7 @@ def backward(distance=1):
 
 def rotate(degrees):
     forwardStartHeading = degrees
-    adjust_speed(30, 30)
+    adjust_speed(35, 35)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
