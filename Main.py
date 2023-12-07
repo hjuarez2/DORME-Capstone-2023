@@ -136,7 +136,7 @@ def rotate(degrees):
     global forwardStartHeading
     forwardStartHeading = degrees
     degrees+=degree_offset
-    adjust_speed(40, 40)
+    adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
