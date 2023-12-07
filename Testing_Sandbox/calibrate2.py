@@ -125,6 +125,10 @@ while True:
         # Capture the samples and show the progress
         if not i % (SAMPLE_SIZE / 20):
             print("*", end="")
+        
+        if (i>SAMPLE_SIZE/2):
+            adjust_speed(70, 25)
+
 
         mag_x, mag_y, mag_z = magnetometer.magnetic
 
@@ -137,6 +141,8 @@ while True:
         max_z = max(max_z, mag_z)
 
         time.sleep(0.01)
+
+    
 
     # Calculate the middle of the min/max range
     offset_x = (max_x + min_x) / 2
