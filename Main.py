@@ -81,7 +81,6 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance = 1):
-    global forwardStartHeading
     adjust_speed(75, 75)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
