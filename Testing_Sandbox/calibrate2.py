@@ -91,7 +91,7 @@ def adjust_speed(left, right):
     GPIO.output(in4,GPIO.LOW)
 
 
-SAMPLE_SIZE = 5000
+SAMPLE_SIZE = 1000 #5000
 
 i2c = busio.I2C(board.SCL, board.SDA)
 magnetometer = LIS3MDL(i2c)
