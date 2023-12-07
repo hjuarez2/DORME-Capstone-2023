@@ -33,10 +33,10 @@ i2c = board.I2C()
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.Rate = Rate.RATE_155_HZ #ULTRA Acccurate performance
 sensor.range = Range.RANGE_4_GAUSS
-x_offset= -6.88
-y_offset = -18.28
+x_offset= -7.45
+y_offset = -12.42
 z_offset = 68.47
-degree_offset = -13
+degree_offset = -17
 print("Magnetometer Range: %d Gauss" % Range.string[sensor.range])
 print("Magnetometer data_rate is", Rate.string[sensor.data_rate], "HZ")
 print("Magnetometer performance_mode is", PerformanceMode.string[sensor.performance_mode])
@@ -52,7 +52,6 @@ timedistance_ratio = 1
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
-    angle+=degree_offset
     if angle < 0:
         angle += 360
     return angle
@@ -81,8 +80,9 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance = 1):
+    global forwardStartHeading
     forwardStartHeading = get_heading(sensor)
-    adjust_speed(75, 75)
+    adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
@@ -113,11 +113,11 @@ def checkHeading(target_heading, tolerance = 0.5):
         if error < 0 and rSpeed < 75:
             # Turn left
             print("Adjusting left")
-            adjust_steering_angle(-0.01)  # Placeholder function for left adjustment
+            adjust_steering_angle(-0.05)  # Placeholder function for left adjustment
         elif error > 0 and lSpeed < 75:
             # Turn right
             print("Adjusting right")
-            adjust_steering_angle(0.01)  # Placeholder function for right adjustment
+            adjust_steering_angle(0.05)  # Placeholder function for right adjustment
             
 
 def adjust_steering_angle(error):
@@ -133,7 +133,7 @@ def backward(distance=1):
     GPIO.output(in4,GPIO.HIGH)
 
 def rotate(degrees):
-    adjust_speed(35, 35)
+    adjust_speed(40, 40)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
