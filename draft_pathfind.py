@@ -70,6 +70,14 @@ def get_coordinates(node):
     }
     return coordinates[node]
 
+def short_path(start_point, end_point):
+    if start_point not in graph or end_point not in graph:
+        print("Invalid start or end point.")
+    else:
+        shortest_path = a_star(graph, start_point, end_point)
+        print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
+    return shortest_path
+
 def reconstruct_path(came_from, current):
     path = []
     while current:
