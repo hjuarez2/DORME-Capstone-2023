@@ -4,7 +4,7 @@ import math
 # Updated graph with connections between nodes
 graph = {
     'Duncan Hall': [('Crossroad1', 'East'), ('Crossroad2', 'North')],
-    'Debart Hall': [('Crossroad1', 'East'), ('Crossroad4', 'North')],
+    'Debart Hall': [('Crossroad1', 'East'), ('Crossroad4', 'North'), ('Crossroad5', 'West')],
     'Fitzpatrick Hall': [('Crossroad1','South'),('Crossroad4', 'South')],
     'Riley Hall': [('Crossroad2', 'West'), ('Crossroad3', 'East'), ('Crossroad4','West')],
     'Morris Inn': [('Crossroad5', 'Northeast')],
