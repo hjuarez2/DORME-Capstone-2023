@@ -62,6 +62,7 @@ def get_coordinates(node):
         'Crossroad2': (41.69925, -86.235627),
         'Crossroad3': (41.699356, -86.236295),
         'Crossroad4': (41.699348, -86.236527),
+        'Crossroad5': (41.698829, -86.237048),
     }
     return coordinates[node]
 
