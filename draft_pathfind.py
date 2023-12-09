@@ -4,14 +4,16 @@ import math
 # Updated graph with connections between nodes
 graph = {
     'Duncan Hall': [('Crossroad1', 'East'), ('Crossroad2', 'North')],
-    'Debart Hall': [('Crossroad1', 'East'), ('Crossroad4', 'North'), ('Crossroad5', 'West')],
+    'Debart Hall': [('Crossroad1', 'East'), ('Crossroad4', 'North'), ('Crossroad5', 'Southwest')],
     'Fitzpatrick Hall': [('Crossroad1','South'),('Crossroad4', 'South')],
     'Riley Hall': [('Crossroad2', 'West'), ('Crossroad3', 'East'), ('Crossroad4','West')],
+    'Morris Inn': [('Crossroad5', 'Northeast')],
     'Crossroad1': [('Duncan Hall', 'West'), ('Debart Hall', 'West'), ('Fitzpatrick Hall', 'North')],
     'Crossroad2': [('Duncan Hall', 'South'), ('Riley Hall', 'East')],
     'Crossroad3': [('Riley Hall', 'West'), ('Crossroad4', 'West')],
     'Crossroad4':[('Fitzpatrick Hall', 'North'), ('Debart Hall', 'South'), ('Riley Hall', 'East'), ('Crossroad3', 'East')],
     'Crossroad5':[('Fitzpatrick Hall', 'North'), ('Debart Hall', 'East'), ('Duncan Hall', 'East'), ('Morris Inn', 'West')],
+
 }
 
 
@@ -76,19 +78,13 @@ def reconstruct_path(came_from, current):
     path.reverse()
     return path
 
-def short_path(start_point, end_point):
-    if start_point not in graph or end_point not in graph:
-        print("Invalid start or end point.")
-    else:
-        shortest_path = a_star(graph, start_point, end_point)
-        print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
-    return shortest_path
+start_point = input("Enter the starting point: ")
+end_point = input("Enter the end point: ")
 
-
-if __name__ == "__main__":
-    start_point = input("Enter the starting point: ")
-    end_point = input("Enter the end point: ")
-
-    short_path(start_point, end_point)
+if start_point not in graph or end_point not in graph:
+    print("Invalid start or end point.")
+else:
+    shortest_path = a_star(graph, start_point, end_point)
+    print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
 
 
