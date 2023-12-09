@@ -48,7 +48,6 @@ print("Magnetometer z_offset is ", z_offset)
 
 
 #distance conversion
-#timedistance_ratio = 1.1
 timedistance_ratio = 1.1
 
 def vector_2_degrees(x, y):
@@ -111,11 +110,11 @@ def checkHeading(target_heading, tolerance = 0.5):
 
 
     if abs(error) > tolerance:
-        if error < 0 and rSpeed < 30:
+        if error < 0 and rSpeed < 60:
             # Turn left
             print("Adjusting left")
             adjust_steering_angle(-0.1)  # Placeholder function for left adjustment
-        elif error > 0 and lSpeed < 30:
+        elif error > 0 and lSpeed < 60:
             # Turn right
             print("Adjusting right")
             adjust_steering_angle(0.1)  # Placeholder function for right adjustment
@@ -137,7 +136,7 @@ def rotate(degrees):
     global forwardStartHeading
     forwardStartHeading = degrees
     degrees+=degree_offset
-    adjust_speed(40, 40)
+    adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
