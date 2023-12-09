@@ -59,6 +59,7 @@ def get_coordinates(node):
         'Debart Hall': (41.69889, -86.23652),
         'Fitzpatrick Hall': (41.99530, -86.236295),
         'Riley Hall': (41.699427, -86.235644),
+        'Morris Inn': (41.698191, -86.239049),
         'Crossroad1': (41.699016, -86.236491),
         'Crossroad2': (41.69925, -86.235627),
         'Crossroad3': (41.699356, -86.236295),
