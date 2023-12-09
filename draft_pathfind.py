@@ -10,7 +10,8 @@ graph = {
     'Crossroad1': [('Duncan Hall', 'West'), ('Debart Hall', 'West'), ('Fitzpatrick Hall', 'North')],
     'Crossroad2': [('Duncan Hall', 'South'), ('Riley Hall', 'East')],
     'Crossroad3': [('Riley Hall', 'West'), ('Crossroad4', 'West')],
-    'Crossroad4':[('Fitzpatrick Hall', 'North'), ('Debart Hall', 'South'), ('Riley Hall', 'East'), ('Crossroad3', 'East')]
+    'Crossroad4':[('Fitzpatrick Hall', 'North'), ('Debart Hall', 'South'), ('Riley Hall', 'East'), ('Crossroad3', 'East')],
+    'Crossroad5':[('Fitzpatrick Hall', 'North'), ('Debart Hall', 'East'), ('Duncan Hall', 'East'), ('Morris Inn', 'West')],
 }
 
 
