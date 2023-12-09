@@ -36,7 +36,7 @@ sensor.range = Range.RANGE_4_GAUSS
 x_offset= -9.57
 y_offset = -16.67
 z_offset = 71.16
-degree_offset = 25
+degree_offset = -25
 print("Magnetometer Range: %d Gauss" % Range.string[sensor.range])
 print("Magnetometer data_rate is", Rate.string[sensor.data_rate], "HZ")
 print("Magnetometer performance_mode is", PerformanceMode.string[sensor.performance_mode])
@@ -109,11 +109,11 @@ def checkHeading(target_heading, tolerance = 0.5):
 
 
     if abs(error) > tolerance:
-        if error < 0 and rSpeed < 60:
+        if error < 0 and rSpeed < 55:
             # Turn left
             print("Adjusting left")
             adjust_steering_angle(-0.1)  # Placeholder function for left adjustment
-        elif error > 0 and lSpeed < 80:
+        elif error > 0 and lSpeed < 70:
             # Turn right
             print("Adjusting right")
             adjust_steering_angle(0.1)  # Placeholder function for right adjustment
