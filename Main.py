@@ -48,7 +48,8 @@ print("Magnetometer z_offset is ", z_offset)
 
 
 #distance conversion
-timedistance_ratio = 1.1
+#timedistance_ratio = 1.1
+timedistance_ratio = 0.25
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
