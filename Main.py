@@ -81,8 +81,7 @@ p1.start(25)
 p2.start(25)
 
 def forward(distance = 1):
-    #adjust_speed(50, 50)
-    adjust_speed(20,20)
+    adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.HIGH)
