@@ -81,5 +81,4 @@ while True:
         f"\n\n  Final Calibration: X:{offset_x:6.2f} Y:{offset_y:6.2f} Z:{offset_z:6.2f} uT\n"
     )
     
-
     time.sleep(5)
