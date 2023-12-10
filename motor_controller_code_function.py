@@ -29,6 +29,7 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
+# Move forward for the specified distance with a low speed
 def forward(distance=1):
     adjust_speed('low')
     GPIO.output(in1,GPIO.HIGH)
@@ -38,6 +39,7 @@ def forward(distance=1):
     sleep(speedrate*distance)
     stop_motors()
 
+# Move backwards for the specified distance with a low speed
 def backward(distance=1):
     adjust_speed('low')
     GPIO.output(in1,GPIO.LOW)
@@ -47,6 +49,7 @@ def backward(distance=1):
     sleep(speedrate*distance)
     stop_motors()
 
+# Rotate for the specified degrees with a medium speed
 def rotate(degrees=1):
     adjust_speed('medium')
     GPIO.output(in1,GPIO.HIGH)
@@ -56,6 +59,7 @@ def rotate(degrees=1):
     sleep(turnrate*degrees)
     stop_motors()
 
+# Adjust the speed based on the specified level (low, medium, high)
 def adjust_speed(level):
     if level == 'low':
         p1.ChangeDutyCycle(30)
@@ -70,6 +74,7 @@ def adjust_speed(level):
     else:
         print("Invalid speed level")
 
+# Stop the motors
 def stop_motors():
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.LOW)

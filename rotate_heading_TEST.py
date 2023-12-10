@@ -53,7 +53,7 @@ def get_heading(_sensor):
     magnet_y +=y_offset
     return vector_2_degrees(magnet_x, magnet_y)
 
-#GPIO initialization
+# GPIO initialization
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1,GPIO.OUT)
 GPIO.setup(in2,GPIO.OUT)
@@ -70,7 +70,7 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
-# Forward
+# Move forward for the specified distance
 def forward(distance = 1):
     global forwardStartHeading
     forwardStartHeading = get_heading(_sensor)
@@ -109,7 +109,7 @@ def adjust_steering_angle(error):
     # Placeholder function to simulate steering adjustment
     adjust_speed(lSpeed*(-error),rSpeed*error)
 
-# Backward 
+# Move backward for the specified distance
 def backward(distance=1):
     adjust_speed(50,50)
     GPIO.output(in1,GPIO.LOW)
@@ -117,7 +117,7 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
-# Rotate
+# Rotate for the specified degrees
 def rotate(degrees):
     adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
