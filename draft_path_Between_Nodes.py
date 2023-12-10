@@ -26,8 +26,6 @@ def two_coordinates_to_distance_and_bearing(coord_pair_from, coord_pair_to):
     # returning a tuple (distance between nodes, angle between nodes)
     return (distance, angle_degrees)
 
-
-
 # this function will essentially do the opposite of two_coordinates_to_distance_and_bearing() in that it will
 # return the delta_x and delta_y when given two distance and angle
 def distance_and_bearing_to_coordinates(distance, angle_degrees):

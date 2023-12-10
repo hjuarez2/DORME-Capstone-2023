@@ -29,6 +29,7 @@ import adafruit_lis3mdl
 
 SAMPLE_SIZE = 5000
 
+# Initialize I2C and LIS3MDL sensor
 i2c = busio.I2C(board.SCL, board.SDA)
 magnetometer = LIS3MDL(i2c)
 magnetometer.Rate = Rate.RATE_155_HZ

@@ -1,6 +1,5 @@
 # This program will be run to initate total functionality of DORM-E 
 
-
 import RPi.GPIO as GPIO          
 from time import sleep
 from pathfind import short_path
@@ -12,8 +11,6 @@ import adafruit_lis3mdl
 from adafruit_lis3mdl import  Range
 import time
 from math import atan2, degrees
-
-
 
 #import motor_controller_code_function.py as mc
 
@@ -108,7 +105,6 @@ def adjust_steering_angle(error):
     # Placeholder function to simulate steering adjustment
     adjust_speed(lSpeed*(-error),rSpeed*error)
 
-
 def backward(distance=1):
     adjust_speed(50,50)
     GPIO.output(in1,GPIO.LOW)
@@ -135,7 +131,6 @@ def adjust_speed(left, right):
     rSpeed = right
     p1.ChangeDutyCycle(lSpeed)
     p2.ChangeDutyCycle(rSpeed)
-
 
 def stop_motors():
     GPIO.output(in1,GPIO.LOW)
