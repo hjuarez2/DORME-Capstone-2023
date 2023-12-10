@@ -13,6 +13,7 @@ turnrate = 0.002777777777778
 ena = 12
 enb = 13
 
+# GPIO setup
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1,GPIO.OUT)
 GPIO.setup(in2,GPIO.OUT)
