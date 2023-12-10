@@ -1,6 +1,6 @@
 # This program will be run to initate total functionality of DORM-E 
 
-
+# Libraries
 import RPi.GPIO as GPIO          
 from time import sleep
 from pathfind import short_path
@@ -12,9 +12,7 @@ import adafruit_lis3mdl
 import time
 from adafruit_lis3mdl import  Range, Rate, PerformanceMode
 
-
-
-#import motor_controller_code_function.py as mc
+# Import motor_controller_code_function.py as mc
 
 # Pin setup and Constants
 in1 = 24
@@ -28,7 +26,7 @@ lSpeed = 75
 rSpeed = 75
 forwardStartHeading = 0
 
-#compass setup and offset calibration
+# Compass setup and offset calibration
 i2c = board.I2C()
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.Rate = Rate.RATE_155_HZ #ULTRA Acccurate performance
@@ -44,11 +42,9 @@ print("Magnetometer x_offset is ", x_offset)
 print("Magnetometer y_offset is ", y_offset)
 print("Magnetometer z_offset is ", z_offset)
 
-
-
-
-#distance conversion
+# Distance conversion
 timedistance_ratio = 1.1
+
 
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
@@ -80,6 +76,7 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
+# Forward
 def forward(distance = 1):
     adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
