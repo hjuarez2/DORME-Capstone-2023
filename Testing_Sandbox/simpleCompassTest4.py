@@ -11,8 +11,6 @@ import RPi.GPIO as GPIO
 from time import sleep
 import board
 
-
-
 i2c = board.I2C()  # uses board.SCL and board.SDA
 # i2c = board.STEMMA_I2C()  # For using the built-in STEMMA QT connector on a microcontroller
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
@@ -88,13 +86,11 @@ def vector_2_degrees(x, y):
         angle += 360
     return angle
 
-
 def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
     magnet_x += x_offset
     magnet_y +=y_offset
     return vector_2_degrees(magnet_x, magnet_y)
-
 
 while True:
     rotate(0)
