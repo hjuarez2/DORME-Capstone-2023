@@ -17,7 +17,6 @@ graph = {
     'Crossroad5':[('Fitzpatrick Hall', 'North'), ('Debart Hall', 'East'), ('Duncan Hall', 'East'), ('Morris Inn', 'West')],
 }
 
-
 def a_star(graph, start, end):
     open_set = []
     heapq.heappush(open_set, (0, start))
