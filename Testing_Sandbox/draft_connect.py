@@ -2,34 +2,42 @@ from  draft_pathfind import short_path
 from  draft_pathfind import get_coordinates
 from  draft_path_Between_Nodes import two_coordinates_to_distance_and_bearing
 
-new_list = []
-second_list = []
+# Lists to store Cartesian and Polar coordinates
+cartesian_coordinate_list = []
+polar_coordinate_list = []
 
-def from_name_to_coordinates(node_list):
-    for node in node_list:
-        new_list.append(get_coordinates(node))
+# Convert node names to Cartesian coordinates
+def from_name_to_coordinates(node_name_list):
+    for node in node_name_list:
+        cartesian_coordinate_list.append(get_coordinates(node))
 
-    return new_list
+    return cartesian_coordinate_list
 
-def from_coordinates_to_distance(new_list):
-    del second_list[:]
-    for i in range (0, len(new_list)-1):
-        distance_and_bearing = two_coordinates_to_distance_and_bearing(new_list[i], new_list[i+1])
+# Calculate distances and bearings between consecutive Cartesian coordinates
+def from_coordinates_to_distance(cartesian_coordinate_list):
+    del polar_coordinate_list[:] # Clear the polar coordinates list
+    for i in range (0, len(cartesian_coordinate_list)-1):
+        # Calculate distance and bearing between two coordinates
+        distance_and_bearing = two_coordinates_to_distance_and_bearing(cartesian_coordinate_list[i], cartesian_coordinate_list[i+1])
+        # Modify the distance value (scaling factor) and create a new tuple
         first_value = distance_and_bearing[0]
         modified_tuple = (84922.48010 * first_value, distance_and_bearing[1])
-        second_list.append(modified_tuple)
+        polar_coordinate_list.append(modified_tuple)
     
-    return second_list
+    return polar_coordinate_list
 
 if __name__ == "__main__":
+    # Get user input for start and end points
     start_point = input("Enter the starting point: ")
     end_point = input("Enter the end point: ")
-    node_list = short_path(start_point, end_point)
 
-    # array of nodes -> draft connect function
-    new_list = from_name_to_coordinates(node_list)
-    second_list = from_coordinates_to_distance(new_list)
+    # Find the shortest path between start and end points
+    node_name_list = short_path(start_point, end_point)
 
-    print(f"Second list: {second_list}")
+    # Convert node names to Cartesian coordinates to distance and bearings
+    cartesian_coordinate_list = from_name_to_coordinates(node_name_list)
+    polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
+
+    print(f"Second list: {polar_coordinate_list}")
 
     
