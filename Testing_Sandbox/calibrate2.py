@@ -20,7 +20,7 @@ This code was derived from the '9dof_calibration.py' Blinka code
 authored by Melissa LeBlanc-Williams for the 'Adafruit SensorLab -
 Magnetometer Calibration' learning guide (c)2020.
 """
-
+#Libraries
 import time
 import busio
 from adafruit_lis3mdl import LIS3MDL, Rate, Range

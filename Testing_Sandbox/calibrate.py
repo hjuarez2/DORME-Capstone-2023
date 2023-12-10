@@ -21,6 +21,7 @@ authored by Melissa LeBlanc-Williams for the 'Adafruit SensorLab -
 Magnetometer Calibration' learning guide (c)2020.
 """
 
+#Libraries
 import time
 import board
 import busio

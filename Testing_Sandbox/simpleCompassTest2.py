@@ -1,9 +1,6 @@
 # This program will be run to initate total functionality of DORM-E 
 
-#import Course_Correction.py as cc
-#import Path_Selection.py as ps
-#import sensors as ss
-#import draft_pathfind.py as pf
+#Libraries
 import RPi.GPIO as GPIO          
 from time import sleep
 import board
@@ -13,7 +10,6 @@ import adafruit_lis3mdl
 i2c = board.I2C() # uses board.SCL and board.SDA
 # i2c = board.STEMMA_I2C() # For using the built-in STEMMA QT connector on a microcontroller
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
-
 
 #import motor_controller_code_function.py as mc
 
@@ -34,7 +30,6 @@ degree=1
 
 #compass setup
 
-
 #GPIO initialization
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1,GPIO.OUT)
@@ -52,6 +47,7 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
+# Move forward
 def forward():
     adjust_speed(75, 85)
     GPIO.output(in1,GPIO.HIGH)
@@ -59,7 +55,7 @@ def forward():
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
 
-
+# Move backward
 def backward(distance=1):
     adjust_speed(50,50)
     GPIO.output(in1,GPIO.LOW)
@@ -67,6 +63,7 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
+# Rotate
 def rotate():
     adjust_speed(25, 25)
     GPIO.output(in1,GPIO.HIGH)
@@ -74,6 +71,7 @@ def rotate():
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
+# Adjust speed
 def adjust_speed(left, right):
     global lSpeed
     global rSpeed 
@@ -82,13 +80,14 @@ def adjust_speed(left, right):
     p1.ChangeDutyCycle(lSpeed)
     p2.ChangeDutyCycle(rSpeed)
 
-
+# Stop motors
 def stop_motors():
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.LOW)
 
+# Calculate heading from magnetometer readings
 def calculate_heading(x, y):
     heading = math.atan2(x, y)
     # Convert radians to degrees
@@ -97,13 +96,14 @@ def calculate_heading(x, y):
     normalized_heading = (heading_degrees + 360) % 360
     return normalized_heading
 
-
 if __name__ == "__main__":
+    # Set the target heading and threshold for the first rotation
     target = 320.7133087059849
     threshold_angle = 3
     consecutive_within_threshold = 0
     threshold_consecutive_readings = 1
 
+    # Rotate until the target heading is reached within the threshold
     while True:
         mag_x, mag_y, mag_z = sensor.magnetic
         sleep(0.1)
@@ -120,6 +120,7 @@ if __name__ == "__main__":
                 break  # Exit the loop once the target heading is reached within the threshold for consecutive readings
         else:
             consecutive_within_threshold = 0  # Reset the counter if not consecutive within threshold
+            
     stop_motors
     sleep(3)
     forward()
@@ -147,7 +148,6 @@ if __name__ == "__main__":
             consecutive_within_threshold = 0  # Reset the counter if not consecutive within threshold
 
     GPIO.cleanup
-
 
 #translations
 #61: 90
