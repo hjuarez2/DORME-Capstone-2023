@@ -1,5 +1,6 @@
 # This program will be run to initate total functionality of DORM-E 
 
+# Libraries
 import RPi.GPIO as GPIO          
 from time import sleep
 from pathfind import short_path
@@ -26,7 +27,7 @@ lSpeed = 75
 rSpeed = 75
 forwardStartHeading = 0
 
-#compass setup and offset calibration
+# Compass setup and offset calibration
 i2c = board.I2C()
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.range = Range.RANGE_4_GAUSS
@@ -34,15 +35,18 @@ x_offfset= -12.40
 y_offset = -20.42
 z_offset = -9.49
 degree_offset = -326.8828
-#distance conversion
+
+# Distance conversion
 timedistance_ratio = 1
 
+# Convert vector components to degrees
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
     if angle < 0:
         angle += 360
     return angle
 
+# Get the heading from the LIS3MDL sensor
 def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
     magnet_x += x_offfset
@@ -66,6 +70,7 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
+# Forward
 def forward(distance = 1):
     global forwardStartHeading
     forwardStartHeading = get_heading(_sensor)
@@ -97,7 +102,6 @@ def checkHeading(target_heading, tolerance = 1):
         else:
             # Turn right
             adjust_steering_angle(1)  # Placeholder function for right adjustment
-            #a
     else:
         print("On course, no steering adjustment needed")
 
@@ -105,6 +109,7 @@ def adjust_steering_angle(error):
     # Placeholder function to simulate steering adjustment
     adjust_speed(lSpeed*(-error),rSpeed*error)
 
+# Backward 
 def backward(distance=1):
     adjust_speed(50,50)
     GPIO.output(in1,GPIO.LOW)
@@ -112,6 +117,7 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
+# Rotate
 def rotate(degrees):
     adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
@@ -124,6 +130,7 @@ def rotate(degrees):
     print(get_heading(sensor))
     stop_motors()
 
+# Adjust speed
 def adjust_speed(left, right):
     global lSpeed
     global rSpeed 
@@ -132,6 +139,7 @@ def adjust_speed(left, right):
     p1.ChangeDutyCycle(lSpeed)
     p2.ChangeDutyCycle(rSpeed)
 
+# Stop motors
 def stop_motors():
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.LOW)
