@@ -4,8 +4,8 @@
 import RPi.GPIO as GPIO          
 from time import sleep
 from pathfind import short_path
-from Testing_Sandbox.draft_connect import from_name_to_coordinates
-from Testing_Sandbox.draft_connect import from_coordinates_to_distance
+from connect import from_name_to_coordinates
+from connect import from_coordinates_to_distance
 import board
 from math import atan2, degrees
 import adafruit_lis3mdl
@@ -45,7 +45,7 @@ print("Magnetometer z_offset is ", z_offset)
 # Distance conversion
 timedistance_ratio = 1.1
 
-
+# Convert vector components to degrees
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
     angle+=degree_offset
@@ -53,6 +53,7 @@ def vector_2_degrees(x, y):
         angle += 360
     return angle
 
+# Get the heading from the LIS3MDL sensor
 def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
     magnet_x += x_offset
@@ -76,7 +77,7 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
-# Forward
+# Move forward
 def forward(distance = 1):
     adjust_speed(50, 50)
     GPIO.output(in1,GPIO.HIGH)
@@ -91,6 +92,7 @@ def forward(distance = 1):
         current_time = time.time()
     stop_motors()
 
+# Check heading
 def checkHeading(target_heading, tolerance = 0.5):
     global lSpeed
     global rSpeed
@@ -120,7 +122,7 @@ def adjust_steering_angle(error):
     # Placeholder function to simulate steering adjustment
     adjust_speed(lSpeed+(error),rSpeed+(-error))
 
-
+# Move backward for the specified distance
 def backward(distance=1):
     adjust_speed(50,50)
     GPIO.output(in1,GPIO.LOW)
@@ -128,6 +130,7 @@ def backward(distance=1):
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.HIGH)
 
+# Rotate for the specified degrees
 def rotate(degrees):
     global forwardStartHeading
     forwardStartHeading = degrees
@@ -142,6 +145,7 @@ def rotate(degrees):
     print(get_heading(sensor))
     stop_motors()
 
+# Adjust the speed
 def adjust_speed(left, right):
     global lSpeed
     global rSpeed 
@@ -150,7 +154,7 @@ def adjust_speed(left, right):
     p1.ChangeDutyCycle(lSpeed)
     p2.ChangeDutyCycle(rSpeed)
 
-
+# Stop motors
 def stop_motors():
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.LOW)
@@ -158,31 +162,35 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
+    # Get user input for start and end points
     start_point = input("Enter the starting point: ")
     end_point = input("Enter the end point: ")
+
+    # Call the 'short_path' function to find and print the shortest path
     node_name_list = short_path(start_point, end_point)
     print("Shortest Path:" + str(node_name_list))
 
+    # Lists to store Cartesian and Polar coordinates
     cartesian_coordinate_list = []
     polar_coordinate_list = []
 
-    # array of nodes -> draft connect function
+    # Convert node names to Cartesian coordinates to distance and bearings
     cartesian_coordinate_list = from_name_to_coordinates(node_name_list)
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
 
     for polar_coordinate_pair in polar_coordinate_list:
-        # turn first and then distance
+
+        # Turn first and then distance
         print("orienting to "+ str(polar_coordinate_pair[1]))
         rotate(polar_coordinate_pair[1])
         sleep(1)
-        # distance
+
+        # Distance
         print("Moving forward "+ str(polar_coordinate_pair[0] )+ "meters")
         forward(polar_coordinate_pair[0])
         sleep(1)
 
-        # we can't determine if we are at next node because of GPS
-
-    # reversing the list
+    # Reversing the list
     print("Arrived at destination. Calculating return route...")
     cartesian_coordinate_list = cartesian_coordinate_list[::-1]
     polar_coordinate_list = from_coordinates_to_distance(cartesian_coordinate_list)
@@ -194,11 +202,11 @@ if __name__ == "__main__":
     sleep(5)
 
     for polar_coordinate_pair in polar_coordinate_list:
-        # turn first and then distance
+        # Turn first and then distance
         print("orienting to "+ str(polar_coordinate_pair[1]))
         rotate(polar_coordinate_pair[1])
         sleep(1)
-        # distance
+        # Distance
         print("Moving forward "+ str(polar_coordinate_pair[0]) + "meters")
         forward(polar_coordinate_pair[0])
         sleep(1)
@@ -206,6 +214,5 @@ if __name__ == "__main__":
     print("Delivery Successful!")
     for _ in range(4):
         continue
-    #unblock dance()
+    # Unblock dance()
     GPIO.cleanup()
-
