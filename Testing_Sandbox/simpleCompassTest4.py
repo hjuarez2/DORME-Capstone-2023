@@ -3,6 +3,7 @@
 
 """ Display compass heading data five times per second """
 
+# Libraries
 from math import atan2, degrees
 import board
 import adafruit_lis3mdl
@@ -12,7 +13,6 @@ from time import sleep
 import board
 
 i2c = board.I2C()  # uses board.SCL and board.SDA
-# i2c = board.STEMMA_I2C()  # For using the built-in STEMMA QT connector on a microcontroller
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.Rate = Rate.RATE_155_HZ
 sensor.range = Range.RANGE_4_GAUSS
@@ -46,6 +46,7 @@ p2 = GPIO.PWM(enb,1000)
 p1.start(25)
 p2.start(25)
 
+# Sensor calibration offsets
 x_offset= -1.90
 y_offset = -17.63
 z_offset = 84.87
@@ -54,12 +55,14 @@ degree_offset = 17
 total_list=0
 samples = 0
 
+# Stop motors
 def stop_motors():
     GPIO.output(in1,GPIO.LOW)
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3,GPIO.LOW)
     GPIO.output(in4,GPIO.LOW)
 
+# Rotate
 def rotate(degrees):
     adjust_speed(40, 40)
     GPIO.output(in1,GPIO.HIGH)
@@ -72,6 +75,7 @@ def rotate(degrees):
     print(get_heading(sensor))
     stop_motors()
 
+# Adjust speed
 def adjust_speed(left, right):
     global lSpeed
     global rSpeed 
@@ -80,12 +84,14 @@ def adjust_speed(left, right):
     p1.ChangeDutyCycle(lSpeed)
     p2.ChangeDutyCycle(rSpeed)
 
+# Convert vector components to degrees
 def vector_2_degrees(x, y):
     angle = degrees(atan2(y, x))
     if angle < 0:
         angle += 360
     return angle
 
+# Get the heading from the LIS3MDL sensor
 def get_heading(_sensor):
     magnet_x, magnet_y, _ = _sensor.magnetic
     magnet_x += x_offset
@@ -94,10 +100,6 @@ def get_heading(_sensor):
 
 while True:
     rotate(0)
-   # total_list+=get_heading(sensor)
-    #samples+=1
-    #print(total_list/samples)
-   # print("heading: {:.2f} degrees".format(get_heading(sensor)))
     sleep(1)
 
     rotate(180)
