@@ -4,13 +4,10 @@
 if __name__ == "__main__":
     print("Hello, World!")
 
-
 def checkOffRoute:
     if sensorreading > Baseline
         courseCorrect()
     else 
-
-
 
 def courseCorrect:
     getBearing
