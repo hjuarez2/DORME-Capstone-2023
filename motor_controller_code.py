@@ -1,9 +1,11 @@
 # Python Script
 # https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/
 
+# Libraries
 import RPi.GPIO as GPIO          
 from time import sleep
 
+# Pin configuration
 in1 = 24
 in2 = 23
 in3 = 17
