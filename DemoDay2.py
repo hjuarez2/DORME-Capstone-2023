@@ -161,14 +161,8 @@ def stop_motors():
     GPIO.output(in4,GPIO.LOW)
 
 if __name__ == "__main__":
-    for i in range(5):
-        rotate(270)
-        sleep(1)
-        forward(1)
-        sleep(1)
-        rotate(90)
-        sleep(1)
-        forward(1)
+    while True:
+        print(get_heading(sensor))
         sleep(1)
     GPIO.cleanup()
 
