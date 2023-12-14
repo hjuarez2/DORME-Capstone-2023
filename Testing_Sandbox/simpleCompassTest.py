@@ -16,9 +16,10 @@ def calculate_heading(x, y):
     normalized_heading = (heading_degrees + 360) % 360
     return normalized_heading
 
-xoff=10.46
-yoff=13.97
-zoff=-15.70
+
+xoff= -9.49
+yoff = -10.58
+zoff = 79.62
 
 while True: 
     mag_x, mag_y, mag_z = sensor.magnetic
