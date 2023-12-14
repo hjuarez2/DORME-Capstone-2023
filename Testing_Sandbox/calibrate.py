@@ -21,6 +21,7 @@ authored by Melissa LeBlanc-Williams for the 'Adafruit SensorLab -
 Magnetometer Calibration' learning guide (c)2020.
 """
 
+#Libraries
 import time
 import board
 import busio
@@ -29,6 +30,7 @@ import adafruit_lis3mdl
 
 SAMPLE_SIZE = 5000
 
+# Initialize I2C and LIS3MDL sensor
 i2c = busio.I2C(board.SCL, board.SDA)
 magnetometer = LIS3MDL(i2c)
 magnetometer.Rate = Rate.RATE_155_HZ
@@ -81,5 +83,4 @@ while True:
         f"\n\n  Final Calibration: X:{offset_x:6.2f} Y:{offset_y:6.2f} Z:{offset_z:6.2f} uT\n"
     )
     
-
     time.sleep(5)

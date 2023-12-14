@@ -1,9 +1,11 @@
 # Python Script
 # https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/
 
+# Libraries
 import RPi.GPIO as GPIO          
 from time import sleep
 
+# Pin configuration
 in1 = 24
 in2 = 23
 in3 = 17
@@ -12,6 +14,7 @@ ena = 12
 enb= 13
 temp1=1
 
+# GPIO setup
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1,GPIO.OUT)
 GPIO.setup(in2,GPIO.OUT)
@@ -39,24 +42,29 @@ while(1):
 
     x=input()
     
+    # Run
     if x=='r':
         print("run")
+
+        # Forward
         if(temp1==1):
-         GPIO.output(in1,GPIO.HIGH)
-         GPIO.output(in2,GPIO.LOW)
-         GPIO.output(in3,GPIO.HIGH)
-         GPIO.output(in4,GPIO.LOW)
-         print("forward")
-         x='z'
+            GPIO.output(in1,GPIO.HIGH)
+            GPIO.output(in2,GPIO.LOW)
+            GPIO.output(in3,GPIO.HIGH)
+            GPIO.output(in4,GPIO.LOW)
+            print("forward")
+            x='z'
+
+        # Backwards
         else:
-         GPIO.output(in1,GPIO.LOW)
-         GPIO.output(in2,GPIO.HIGH)
-         GPIO.output(in3,GPIO.LOW)
-         GPIO.output(in4,GPIO.HIGH)
-         print("backward")
-         x='z'
+            GPIO.output(in1,GPIO.LOW)
+            GPIO.output(in2,GPIO.HIGH)
+            GPIO.output(in3,GPIO.LOW)
+            GPIO.output(in4,GPIO.HIGH)
+            print("backward")
+            x='z'
 
-
+    # Stop
     elif x=='s':
         print("stop")
         GPIO.output(in1,GPIO.LOW)
@@ -65,6 +73,7 @@ while(1):
         GPIO.output(in4,GPIO.LOW)
         x='z'
 
+    # Forward
     elif x=='f':
         print("forward")
         GPIO.output(in1,GPIO.HIGH)
@@ -74,6 +83,7 @@ while(1):
         temp1=1
         x='z'
 
+    # Backward
     elif x=='b':
         print("backward")
         GPIO.output(in1,GPIO.LOW)
@@ -83,18 +93,21 @@ while(1):
         temp1=0
         x='z'
 
+    # Low speed
     elif x=='l':
         print("low")
         p1.ChangeDutyCycle(10)
         p2.ChangeDutyCycle(10)
         x='z'
 
+    # Medium speed
     elif x=='m':
         print("medium")
         p1.ChangeDutyCycle(20)
         p2.ChangeDutyCycle(20)
         x='z'
 
+    # High speed
     elif x=='h':
         print("high")
         p1.ChangeDutyCycle(35)

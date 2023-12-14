@@ -1,3 +1,4 @@
+# Libraries
 import heapq
 import math
 
@@ -15,7 +16,6 @@ graph = {
     'Crossroad5':[('Fitzpatrick Hall', 'North'), ('Debart Hall', 'East'), ('Duncan Hall', 'East'), ('Morris Inn', 'West')],
 
 }
-
 
 def a_star(graph, start, end):
     open_set = []
@@ -87,8 +87,6 @@ def reconstruct_path(came_from, current):
     path.reverse()
     return path
 
-
-
 if __name__ == "__main__":
     start_point = input("Enter the starting point: ")
     end_point = input("Enter the end point: ")
@@ -98,5 +96,3 @@ if __name__ == "__main__":
     else:
         shortest_path = a_star(graph, start_point, end_point)
         print(f"Shortest path from {start_point} to {end_point} is: {shortest_path}")
-    
-    
