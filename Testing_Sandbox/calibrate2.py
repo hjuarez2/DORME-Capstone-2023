@@ -20,7 +20,7 @@ This code was derived from the '9dof_calibration.py' Blinka code
 authored by Melissa LeBlanc-Williams for the 'Adafruit SensorLab -
 Magnetometer Calibration' learning guide (c)2020.
 """
-
+#Libraries
 import time
 import busio
 from adafruit_lis3mdl import LIS3MDL, Rate, Range
@@ -32,10 +32,7 @@ from time import sleep
 import board
 import sys
 
-
-
 i2c = board.I2C()  # uses board.SCL and board.SDA
-# i2c = board.STEMMA_I2C()  # For using the built-in STEMMA QT connector on a microcontroller
 sensor = adafruit_lis3mdl.LIS3MDL(i2c)
 sensor.Rate = Rate.RATE_155_HZ
 sensor.range = Range.RANGE_4_GAUSS
@@ -90,7 +87,6 @@ def adjust_speed(left, right):
     GPIO.output(in3,GPIO.HIGH)
     GPIO.output(in4,GPIO.LOW)
 
-
 SAMPLE_SIZE = 6000
 
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -129,7 +125,6 @@ while True:
         if (i>SAMPLE_SIZE/2):
             adjust_speed(70, 25)
 
-
         mag_x, mag_y, mag_z = magnetometer.magnetic
 
         min_x = min(min_x, mag_x)
@@ -141,8 +136,6 @@ while True:
         max_z = max(max_z, mag_z)
 
         time.sleep(0.01)
-
-    
 
     # Calculate the middle of the min/max range
     offset_x = (max_x + min_x) / 2
