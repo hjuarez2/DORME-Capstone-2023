@@ -162,11 +162,11 @@ def stop_motors():
 
 if __name__ == "__main__":
     for i in range(5):
-        rotate(180)
+        rotate(270)
         sleep(1)
         forward(1)
         sleep(1)
-        rotate(0)
+        rotate(90)
         sleep(1)
         forward(1)
         sleep(1)
